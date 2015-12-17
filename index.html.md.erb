@@ -1,0 +1,238 @@
+---
+title: AppDynamics APM
+---
+
+This is documentation for the Pivotal Cloud Foundry&reg; [AppDynamics APM](https://network.pivotal.io/products/appsdynamics) tile.
+
+AppDynamics APM supports performance monitoring of application and machine metrics. AppDynamics agent code embedded or bundled with an application instruments the application code and publishes performance monitoring metrics and other details back to the AppDynamics APM Dashboard. 
+
+##<a id='service-broker'></a>AppDynamics Service Broker ##
+
+A Service Broker allows Cloud Foundry applications to bind to services and consume the services easily from the Pivotal Apps Manager Console or from the command line. The AppDynamics Service Broker enables you to use one or more AppDynamics accounts and is deployed as a Java Application on Cloud Foundry. The Broker exposes the AppDynamics service on the Cloud Foundry Marketplace and allows users to directly create a service instance and bind it to their applications either from the Pivotal Apps Manager Console or from the command line. 
+
+The AppDynamics Machine agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard. 
+
+The Pivotal Cloud Foundry&reg; (PCF) Tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension. This makes the installation and subsequent use of AppDynamics on your Cloud Foundry applications simple and easy, while also allowing monitoring and gathering of metrics of all virtual machines related to Cloud Foundry through a single interface. 
+
+##<a id='trial'></a>Trial License ##
+
+Users interested in AppDynamics can sign up for a [free trial license](https://portal.appdynamics.com/account/signup/signupForm).
+
+##<a id='product-snapshot'></a>Product Snapshot ##
+
+<dl>
+<dt>Current <a href="https://network.pivotal.io/products/appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry Details&reg;</dt>
+<dd><strong>Version</strong>: 1.5.2</dd>
+<dd><strong>Release Date</strong>: 2015-12-17</dd>
+<dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0, AppDynamics Machine Agent Extension 4.1.5.3</dd>
+<dd><strong>Compatible Ops Manager Version(s)</strong>: 1.5.x, 1.6.x</dd>
+<dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.4.x, 1.5.x, 1.6.x</dd>
+<dd><strong>Compatible AppDynamics Controller Version(s)</strong>: 4.x</dd>
+<dd><strong>vSphere support?</strong> Yes</dd>
+<dd><strong>AWS support?</strong> Yes</dd>
+</dl>
+
+##<a id='upgrading'></a>Upgrading to the Latest Version ##
+
+Not applicable.
+
+##<a id='installing'></a> Install via Pivotal Ops Manager ##
+
+1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
+1. Upload the product file to your Ops Manager installation.
+1. Click **Add** next to the uploaded product description in the Ops Manager "Available Products" view to add this product to your staging area.
+1. Click the newly added tile to review any configurable options.
+1. Click **Apply Changes** to install the service.
+
+##<a id='configuring'></a>Configuring the AppDynamics Tile ##
+
+1. Log in into Pivotal Ops Manager. 
+1. Click **Import a Product** and import the AppDynamics Tile.
+
+    <%= image_tag("appdynamics/images/import-product.png") %>
+
+1. Select the AppDynamics option.
+
+    <%= image_tag("appdynamics/images/select-appdynamics.png") %>
+
+1. Click **Add** on the AppDynamics Tile.
+
+1. Select the AppDynamics tile.
+
+    <%= image_tag("appdynamics/images/select.png") %>
+
+1. Configure the AppDynamics Service Broker.
+    * Do not change the default application name and default URL.
+      <%= image_tag("appdynamics/images/default.png") %>
+    * Before creating Service Plans, you must collect the License keys from the 
+    AppDynamics Dashboard.
+        * Log in to your AppDynamics account and click the "Settings" gear icon 
+        in the upper right corner of the page.
+          <%= image_tag("appdynamics/images/settings.png") %>
+        * Select **License**.<br>
+          <%= image_tag("appdynamics/images/license.png") %>
+        * Record the details of the license access key and controller.
+          <%= image_tag("appdynamics/images/details.png") %>
+    * Click **Add** on the far right of the Service Plan screen to create a new 
+    service plan.
+    * Create a service plan with each AppDynamics license key.<br>
+      <%= image_tag("appdynamics/images/create-plan.png") %>
+    * Save the plan(s).
+
+1. Configure the Machine Agent Extension.
+    * Ensure that the Pivotal Ops Metrics Tile has been installed and JMX VM is 
+    up and running.
+    * Ensure that the Collector instance is set to `1` in the Pivotal Elastic 
+    Runtime Tile.
+    * Complete the AppDynamics Controller, Account, and Access keys fields.
+        <%= image_tag("appdynamics/images/machine-agent.png") %>
+    * Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
+    * Fill in the credentials to connect to the server. Select the JMX 
+    Authentication checkbox.
+    * If a Web Proxy for outbound HTTP(S) communications exists, fill in the 
+    details of the proxy. Select the Proxy checkbox.
+        <%= image_tag("appdynamics/images/proxy.png") %>
+    * If the HTTP Web Proxy requires authentication, select the Proxy Auth 
+    checkbox and input values for username and password.
+        * Fill in any text value for the Web Proxy Password, even if the proxy 
+        does not require authentication.
+    * Save the changes.
+
+1. Apply your changes.
+
+1. On completion of AppDynamics Tile install, check the Services Marketplace in Apps Manager.
+
+    <%= image_tag("appdynamics/images/marketplace.png") %>
+
+1. View AppDynamics Service Plans.
+
+    <%= image_tag("appdynamics/images/plans.png") %>
+
+1. Bind the AppDynamics Service to an Application.
+
+    <%= image_tag("appdynamics/images/bind.png") %>
+
+1. Log in into AppDynamics to view monitoring data.
+    <br><br>
+    Figure 12.1: AppDynamics App Monitoring Dashboard<br> 
+    <%= image_tag("appdynamics/images/view12.1.1.png") %>
+
+    <%= image_tag("appdynamics/images/view12.1.2.png") %>
+
+    <%= image_tag("appdynamics/images/view12.1.3.png") %>
+
+    <%= image_tag("appdynamics/images/view12.1.4.png") %>
+
+    <%= image_tag("appdynamics/images/view12.1.5.png") %>
+
+    Figure 12.2: Machine Metrics Monitoring Dashboard<br>
+    <%= image_tag("appdynamics/images/view12.2.1.png") %>
+
+##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
+
+If the Cloud Foundry environment needs to use an http(s) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally
+with non-java applications, and use JAVA_OPTS for Java applications.
+
+**Specify using http_proxy for the AppDynamics non-Java application agent to talk to its controller via the proxy**
+
+<pre class='terminal'>
+  $ cf set-env <appName> http_proxy ‘http://user:password@proxy-server.customer.com:8080'
+  
+  $ cf set-env <appName> https_proxy ‘http://user:password@proxy-server.customer.com:8080'
+</pre>
+
+**Specify using JAVA_OPTS for the AppDynamics Java application agent to talk to its controller via the proxy**
+
+<pre class='terminal'>
+  $ cf set-env <appName> JAVA_OPTS " 
+  -Dtest.value=barbar 
+  -Dappdynamics.http.proxyHost=proxy.customer.com
+  -Dappdynamics.http.proxyPort=8080 “
+</pre>
+
+**If a Java application also needs to talk through a proxy, provide standard Java http arguments**
+
+<pre class='terminal'>
+  $ cf set-env <appName> JAVA_OPTS " 
+  -Dtest.value=barbar -Dappdynamics.http.proxyHost=proxy.customer.com
+  -Dappdynamics.http.proxyPort=8080  -Dhttp.proxyHost=proxy.customer.com 
+  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com
+  -Dhttps.proxyPort=8080  “
+</pre>
+
+Whenever making changes to Cloud Foundry environment variables, you must restage your application(s) to make the changes effective.
+
+<pre class='terminal'>
+  $ cf restage <appName>
+</pre>
+
+These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
+
+**ENVIRONMENT VARIABLE GROUPS**
+  
+* **running-environment-variable-group, revg**: Retrieve the contents of the running environment variable group
+* **staging-environment-variable-group, sevg**: Retrieve the contents of the staging environment variable group
+* **set-staging-environment-variable-group, ssevg**: Pass parameters as JSON to create a staging environment variable group
+* **set-running-environment-variable-group, srevg**: Pass parameters as JSON to create a running environment variable group 
+
+Use the JAVA\_OPTS environment variable to specify AppDynamics Agent-specific environment variables in the Staging environment group so the Java Buildpack can use that and push it in the correct place. Specifying JAVA\_OPTS in the Runtime environment variable group will not yield anything, as the buildpack will not know about it.
+
+Example:
+
+<pre class='terminal'>
+  $ cf ssevg '{ "JAVA_OPTS" : " -Dtest.value=barbar 
+  -Dappdynamics.http.proxyHost=proxy.customer.com 
+  -Dappdynamics.http.proxyPort=8080 -Dhttp.proxyHost=proxy.customer.com 
+  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com
+  -Dhttps.proxyPort=8080 -Dspring.profiles.active=dev ", "test_env_profile" : 
+  "Staging" }'
+</pre>
+
+**Machine Agent**
+
+If the machine agent does not expose any metrics in the AppD dashboard:
+
+* Ensure the collector instance is running in Elastic Runtime Tile
+* Ensure the Ops Metrics Tile is installed and verify the admin credentials, IP address, and port of the Metrics instance
+* If a proxy exists, the machine agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
+
+<pre class='terminal'>
+  $ cf set-env AppDynamicsPCFOpsMetrics JAVA_OPTS " 
+  -Dappdynamics.http.proxyHost=proxy.customer.com 
+  -Dappdynamics.http.proxyPort=8080 -Dhttp.proxyHost=proxy.customer.com 
+  -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com 
+  -Dhttps.proxyPort=8080   
+  -Dextension.pcf.jmx.serviceURL=service:jmx:rmi:///jndi/rmi://10.x.y.z:44444/jmxrmi 
+  -Dextension.pcf.jmx.username=admin 
+  -Dextension.pcf.jmx.password=OpsMetricsAdminPassword 
+  -Dappdynamics.agent.maxMetrics=5000 
+  -Dlog4j.configuration=file:/home/vcap/app/conf/logging/log4j.xml
+  -DanyAdditionalParameter=Value"
+</pre>
+
+Edit the above values as needed for IP addresses, passwords, proxy host, and port.
+
+Also refer to:
+
+* [https://docs.appdynamics.com/display/PRO14S/App+Agent+for+Java+Configuration+Properties#AppAgentforJavaConfigurationProperties-ProxyPropertiesfortheController](https://docs.appdynamics.com/display/PRO14S/App+Agent+for+Java+Configuration+Properties#AppAgentforJavaConfigurationProperties-ProxyPropertiesfortheController)
+* [https://docs.appdynamics.com/display/PRO14S/Machine+Agent+Configuration+Properties#MachineAgentConfigurationProperties-ProxyPropertiesfortheController](https://docs.appdynamics.com/display/PRO14S/Machine+Agent+Configuration+Properties#MachineAgentConfigurationProperties-ProxyPropertiesfortheController)
+
+##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
+
+If you are running PCF in an offline manner, you should package the dependencies, including the AppDynamics agent sources, in your PCF environment. 
+
+More details on this can be found here:  [https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html](https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html) 
+
+Also, refer to next section on limitations around Buildpacks.
+
+##<a id='limitations'></a>Limitations ##
+
+* Currently supported Buildpacks bundling AppDynamics Agent are the Java and PHP Buildpacks. 
+    * Java Buildpack 3.4 and later
+	    * Use the latest buildpack or online Java buildpack (use `-b https://github.com/cloudfoundry/java-buildpack` or specify via manifest) when pushing apps that would consume the AppDynamics Services
+    * PHP Buildpack 4.0+
+* Similar support would be built for other language buildpacks in future releases. 
+
+##<a id='feedback'></a>Feedback ##
+
+Please provide any bugs, feature requests, or questions to the Pivotal Cloud Foundry Feedback list.
