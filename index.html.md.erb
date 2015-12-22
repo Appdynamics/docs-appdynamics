@@ -2,7 +2,7 @@
 title: AppDynamics APM
 ---
 
-This is documentation for the Pivotal Cloud Foundry&reg; [AppDynamics APM](https://network.pivotal.io/products/appsdynamics) tile.
+This is documentation for the Pivotal Cloud Foundry&reg; [AppDynamics APM](https://network.pivotal.io/products/p-appdynamics) tile.
 
 AppDynamics APM supports performance monitoring of application and machine metrics. AppDynamics agent code embedded or bundled with an application instruments the application code and publishes performance monitoring metrics and other details back to the AppDynamics APM Dashboard. 
 
@@ -21,7 +21,7 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 ##<a id='product-snapshot'></a>Product Snapshot ##
 
 <dl>
-<dt>Current <a href="https://network.pivotal.io/products/appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry Details&reg;</dt>
+<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry Details&reg;</dt>
 <dd><strong>Version</strong>: 1.5.2</dd>
 <dd><strong>Release Date</strong>: 2015-12-17</dd>
 <dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0, AppDynamics Machine Agent Extension 4.1.5.3</dd>
@@ -112,6 +112,12 @@ Not applicable.
 
     <%= image_tag("appdynamics/images/bind.png") %>
 
+1. In a terminal window, use the `cf restage` command to make the changes effective.
+
+    <pre class='terminal'>
+      $ cf restage APPNAME
+    </pre>
+
 1. Log in into AppDynamics to view monitoring data.
     <br><br>
     Figure 12.1: AppDynamics App Monitoring Dashboard<br> 
@@ -136,15 +142,15 @@ with non-java applications, and use JAVA_OPTS for Java applications.
 **Specify using http_proxy for the AppDynamics non-Java application agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
-  $ cf set-env <appName> http_proxy ‘http://user:password@proxy-server.customer.com:8080'
+  $ cf set-env APPNAME http_proxy ‘http://user:password@proxy-server.customer.com:8080'
   
-  $ cf set-env <appName> https_proxy ‘http://user:password@proxy-server.customer.com:8080'
+  $ cf set-env APPNAME https_proxy ‘http://user:password@proxy-server.customer.com:8080'
 </pre>
 
 **Specify using JAVA_OPTS for the AppDynamics Java application agent to talk to its controller via the proxy**
 
 <pre class='terminal'>
-  $ cf set-env <appName> JAVA_OPTS " 
+  $ cf set-env APPNAME JAVA_OPTS " 
   -Dtest.value=barbar 
   -Dappdynamics.http.proxyHost=proxy.customer.com
   -Dappdynamics.http.proxyPort=8080 “
@@ -153,7 +159,7 @@ with non-java applications, and use JAVA_OPTS for Java applications.
 **If a Java application also needs to talk through a proxy, provide standard Java http arguments**
 
 <pre class='terminal'>
-  $ cf set-env <appName> JAVA_OPTS " 
+  $ cf set-env APPNAME JAVA_OPTS " 
   -Dtest.value=barbar -Dappdynamics.http.proxyHost=proxy.customer.com
   -Dappdynamics.http.proxyPort=8080  -Dhttp.proxyHost=proxy.customer.com 
   -Dhttp.proxyPort=8080 -Dhttps.proxyHost=proxy.customer.com
@@ -163,7 +169,7 @@ with non-java applications, and use JAVA_OPTS for Java applications.
 Whenever making changes to Cloud Foundry environment variables, you must restage your application(s) to make the changes effective.
 
 <pre class='terminal'>
-  $ cf restage <appName>
+  $ cf restage APPNAME
 </pre>
 
 These environment variables can either be set individually per app, or via env variable groups to be set for all apps as part of staging, running environments, etc., using the cf CLI.
@@ -219,7 +225,7 @@ Also refer to:
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
 
-If you are running PCF in an offline manner, you should package the dependencies, including the AppDynamics agent sources, in your PCF environment. 
+If you are running PCF in an offline manner, you should recreate and package the dependencies, including AppDynamics agent binaries via offline buildpacks, in your PCF environment. 
 
 More details on this can be found here:  [https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html](https://docs.run.pivotal.io/buildpacks/depend-pkg-offline.html) 
 
