@@ -10,7 +10,7 @@ AppDynamics APM supports performance monitoring of application and machine metri
 
 A Service Broker allows Cloud Foundry applications to bind to services and consume the services easily from the Pivotal Apps Manager Console or from the command line. The AppDynamics Service Broker enables you to use one or more AppDynamics accounts and is deployed as a Java Application on Cloud Foundry. The Broker exposes the AppDynamics service on the Cloud Foundry Marketplace and allows users to directly create a service instance and bind it to their applications either from the Pivotal Apps Manager Console or from the command line. 
 
-The AppDynamics Machine agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard. 
+The AppDynamics Machine Agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard. 
 
 The Pivotal Cloud Foundry&reg; (PCF) Tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension. This makes the installation and subsequent use of AppDynamics on your Cloud Foundry applications simple and easy, while also allowing monitoring and gathering of metrics of all virtual machines related to Cloud Foundry through a single interface. 
 
@@ -21,10 +21,11 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 ##<a id='product-snapshot'></a>Product Snapshot ##
 
 <dl>
-<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry Details&reg;</dt>
+<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry&reg; details:</dt>
 <dd><strong>Version</strong>: 1.0</dd>
 <dd><strong>Release Date</strong>: 2015-12-17</dd>
-<dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0, AppDynamics Machine Agent Version: 4.1.5.3</dd>
+<dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0</dd>
+<dd><strong>AppDynamics Machine Agent Version</strong>: 4.1.5.3</dd>
 <dd><strong>Compatible Ops Manager Version(s)</strong>: 1.5.x, 1.6.x</dd>
 <dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.4.x, 1.5.x, 1.6.x</dd>
 <dd><strong>Compatible AppDynamics Controller Version(s)</strong>: 4.x</dd>
@@ -38,7 +39,7 @@ Not applicable.
 
 ##<a id='installing'></a> Install via Pivotal Ops Manager ##
 
-1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
+1. Download the product file from the [AppDynamics Product page](https://network.pivotal.io/products/p-appdynamics) on the [Pivotal Network](https://network.pivotal.io/).
 1. Upload the product file to your Ops Manager installation.
 1. Click **Add** next to the uploaded product description in the Ops Manager "Available Products" view to add this product to your staging area.
 1. Click the newly added tile to review any configurable options.
@@ -46,8 +47,8 @@ Not applicable.
 
 ##<a id='configuring'></a>Configuring the AppDynamics Tile ##
 
-1. Log in into Pivotal Ops Manager. 
-1. Click **Import a Product** and import the AppDynamics Tile.
+1. Log in to the Pivotal Ops Manager. 
+1. Click **Import a Product** and import the AppDynamics tile.
 
     <%= image_tag("appdynamics/images/import-product.png") %>
 
@@ -55,17 +56,17 @@ Not applicable.
 
     <%= image_tag("appdynamics/images/select-appdynamics.png") %>
 
-1. Click **Add** on the AppDynamics Tile.
+1. Click **Add** on the AppDynamics Service Broker tile..
 
-1. Select the AppDynamics tile.
+1. Select the AppDynamics tile from the Installation Dashboard.
 
     <%= image_tag("appdynamics/images/select.png") %>
 
 1. Configure the AppDynamics Service Broker.
     * Do not change the default application name.
       <%= image_tag("appdynamics/images/default.png") %>
-    * Before creating Service Plans, you must collect the License keys from the 
-    AppDynamics Dashboard.
+    * Before creating Service Plans, you must collect the license keys from the 
+      AppDynamics Dashboard.
         * Log in to your AppDynamics account and click the "Settings" gear icon 
         in the upper right corner of the page.
           <%= image_tag("appdynamics/images/settings.png") %>
@@ -74,34 +75,40 @@ Not applicable.
         * Record the details of the license access key and controller.
           <%= image_tag("appdynamics/images/details.png") %>
     * Click **Add** on the far right of the Service Plan screen to create a new 
-    service plan.
-    * Create a service plan with each AppDynamics license key.<br>
-      <%= image_tag("appdynamics/images/create-plan.png") %>
-    * Save the plan(s).
+      service plan.
+    * Enter the Account Name and Access Key from the license page along with  
+      controller binding credentials (ip, port, ssl-enabled). The plan name and 
+      plan description are user-defined.
+
+        <%= image_tag("appdynamics/images/create-plan.png") %>
+	* Click **Save** to save the information for this plan.
+    * Optionally, create additional service plans for the same account key. 
 
 1. Configure the Machine Agent Extension.
     * Ensure that the Pivotal Ops Metrics Tile has been installed and JMX VM is 
-    up and running.
+      running.
     * Ensure that the Collector instance is set to `1` in the Pivotal Elastic 
-    Runtime Tile.
-    * Complete the AppDynamics Controller, Account, and Access keys fields.
+      Runtime Tile.
+    * Complete the AppDynamics Controller, Account Name, and Account Access 
+      Keys fields.
         <%= image_tag("appdynamics/images/machine-agent.png") %>
     * Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
         <%= image_tag("appdynamics/images/jmx.png") %>
     * Fill in the credentials to connect to the server. Select the JMX 
-    Authentication checkbox.
-    * If a Web Proxy for outbound HTTP(S) communications exists, fill in the    
-      details of the proxy. Select the Proxy checkbox.
+      Authentication checkbox.
+    * If a Web Proxy for outbound HTTP(S) communications exists, select the 
+      HTTP Web Proxy Enabled checkbox and fill in the connections details for 
+      the proxy.
         <%= image_tag("appdynamics/images/proxy.png") %>
-    * If the HTTP Web Proxy requires authentication, select the Proxy Auth 
-    checkbox and input values for username and password.
+    * If the HTTP Web Proxy requires authentication, select the HTTP Web Proxy 
+      Auth Enabled checkbox and supply values for username and password.
         * Fill in any text value for the Web Proxy Password, even if the proxy 
-        does not require authentication.
+          does not require authentication.
     * Save the changes.
 
 1. Apply your changes.
 
-1. On completion of AppDynamics Tile install, check the Services Marketplace in Apps Manager.
+1. When finished installing the AppDynamics tile, check the Services Marketplace in Apps Manager.
 
     <%= image_tag("appdynamics/images/marketplace.png") %>
 
@@ -119,25 +126,17 @@ Not applicable.
       $ cf restage APPNAME
     </pre>
 
-1. Log in into AppDynamics to view monitoring data.
+1. Confirm that your application node is reporting to the Controller by logging in to AppDynamics. Your application should appear in the Applications list or as a node in the Application Dashboard:
     <br><br>
     Figure 12.1: AppDynamics App Monitoring Dashboard<br> 
-    <%= image_tag("appdynamics/images/view12.1.1.png") %>
+    <%= image_tag("appdynamics/images/dashboard.png") %>
 
-    <%= image_tag("appdynamics/images/view12.1.2.png") %>
-
-    <%= image_tag("appdynamics/images/view12.1.3.png") %>
-
-    <%= image_tag("appdynamics/images/view12.1.4.png") %>
-
-    <%= image_tag("appdynamics/images/view12.1.5.png") %>
-
-    Figure 12.2: Machine Metrics Monitoring Dashboard<br>
+1. To check PCF Ops metrics, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController, Router, etc.
     <%= image_tag("appdynamics/images/view12.2.1.png") %>
 
 ##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
 
-If the Cloud Foundry environment needs to use an http(s) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally
+If the Cloud Foundry environment needs to use an HTTP(S) proxy for external outbound communication, the Service Broker itself does not need to know anything about the http proxy, as it just relays the license keys to the consumer apps. The consumer application should specify the http\_proxy or https\_proxy as an environment variable for the agent to communicate externally
 with non-java applications, and use JAVA_OPTS for Java applications.
 
 **Specify using http_proxy for the AppDynamics non-Java application agent to talk to its controller via the proxy**
@@ -197,11 +196,11 @@ Example:
 
 **Machine Agent**
 
-If the machine agent does not expose any metrics in the AppD dashboard:
+If the machine agent does not expose any metrics in the AppDynamics dashboard:
 
 * Ensure the collector instance is running in Elastic Runtime Tile
 * Ensure the Ops Metrics Tile is installed and verify the admin credentials, IP address, and port of the Metrics instance
-* If a proxy exists, the machine agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
+* If a proxy exists, the Machine Agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
 
 <pre class='terminal'>
   $ cf set-env AppDynamicsPCFOpsMetrics JAVA_OPTS " 
@@ -221,8 +220,8 @@ Edit the above values as needed for IP addresses, passwords, proxy host, and por
 
 Also refer to:
 
-* [https://docs.appdynamics.com/display/PRO14S/App+Agent+for+Java+Configuration+Properties#AppAgentforJavaConfigurationProperties-ProxyPropertiesfortheController](https://docs.appdynamics.com/display/PRO14S/App+Agent+for+Java+Configuration+Properties#AppAgentforJavaConfigurationProperties-ProxyPropertiesfortheController)
-* [https://docs.appdynamics.com/display/PRO14S/Machine+Agent+Configuration+Properties#MachineAgentConfigurationProperties-ProxyPropertiesfortheController](https://docs.appdynamics.com/display/PRO14S/Machine+Agent+Configuration+Properties#MachineAgentConfigurationProperties-ProxyPropertiesfortheController)
+* [Java Agent Proxy Properties for the Controller](https://docs.appdynamics.com/display/LATEST/Java+Agent+Configuration+Properties#JavaAgentConfigurationProperties-ProxyPropertiesfortheController)
+* [Machine Agent Proxy Properties for the Controller](https://docs.appdynamics.com/display/PRO41/Standalone+Machine+Agent+Configuration+Properties#StandaloneMachineAgentConfigurationProperties-ProxyPropertiesfortheController)
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks ##
 
