@@ -24,7 +24,7 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 <dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry Details&reg;</dt>
 <dd><strong>Version</strong>: 1.0</dd>
 <dd><strong>Release Date</strong>: 2015-12-17</dd>
-<dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0, AppDynamics Machine Agent Extension 4.1.5.3</dd>
+<dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0, AppDynamics Machine Agent Version: 4.1.5.3</dd>
 <dd><strong>Compatible Ops Manager Version(s)</strong>: 1.5.x, 1.6.x</dd>
 <dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.4.x, 1.5.x, 1.6.x</dd>
 <dd><strong>Compatible AppDynamics Controller Version(s)</strong>: 4.x</dd>
@@ -62,7 +62,7 @@ Not applicable.
     <%= image_tag("appdynamics/images/select.png") %>
 
 1. Configure the AppDynamics Service Broker.
-    * Do not change the default application name and default URL.
+    * Do not change the default application name.
       <%= image_tag("appdynamics/images/default.png") %>
     * Before creating Service Plans, you must collect the License keys from the 
     AppDynamics Dashboard.
@@ -87,10 +87,11 @@ Not applicable.
     * Complete the AppDynamics Controller, Account, and Access keys fields.
         <%= image_tag("appdynamics/images/machine-agent.png") %>
     * Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
+        <%= image_tag("appdynamics/images/jmx.png") %>
     * Fill in the credentials to connect to the server. Select the JMX 
     Authentication checkbox.
-    * If a Web Proxy for outbound HTTP(S) communications exists, fill in the 
-    details of the proxy. Select the Proxy checkbox.
+    * If a Web Proxy for outbound HTTP(S) communications exists, fill in the    
+      details of the proxy. Select the Proxy checkbox.
         <%= image_tag("appdynamics/images/proxy.png") %>
     * If the HTTP Web Proxy requires authentication, select the Proxy Auth 
     checkbox and input values for username and password.
