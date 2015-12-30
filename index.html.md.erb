@@ -63,8 +63,8 @@ Not applicable.
     <%= image_tag("appdynamics/images/select.png") %>
 
 1. Configure the AppDynamics Service Broker.
-    * Do not change the default application name.
-      <%= image_tag("appdynamics/images/default.png") %>
+    * Do not change the default application name.<br>
+        <%= image_tag("appdynamics/images/default.png") %>
     * Before creating Service Plans, you must collect the license keys from the 
       AppDynamics Dashboard.
         * Log in to your AppDynamics account and click the "Settings" gear icon 
@@ -98,7 +98,7 @@ Not applicable.
       Authentication checkbox.
     * If a Web Proxy for outbound HTTP(S) communications exists, select the 
       HTTP Web Proxy Enabled checkbox and fill in the connections details for 
-      the proxy.
+      the proxy.<br>
         <%= image_tag("appdynamics/images/proxy.png") %>
     * If the HTTP Web Proxy requires authentication, select the HTTP Web Proxy 
       Auth Enabled checkbox and supply values for username and password.
@@ -128,7 +128,7 @@ Not applicable.
 
 1. Confirm that your application node is reporting to the Controller by logging in to AppDynamics. Your application should appear in the Applications list or as a node in the Application Dashboard:
     <br><br>
-    Figure 12.1: AppDynamics App Monitoring Dashboard<br> 
+    Figure 13.1: AppDynamics App Monitoring Dashboard<br> 
     <%= image_tag("appdynamics/images/dashboard.png") %>
 
 1. To check PCF Ops metrics, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController, Router, etc.
