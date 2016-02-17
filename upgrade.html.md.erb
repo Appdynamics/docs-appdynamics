@@ -1,0 +1,24 @@
+d='limitations'></a>Upgrade ##
+
+**v1.0.1**
+
+**Release Date: 20th February 2016**
+
+Features included in this release
+
+ - Updated stemcell to 3146.8
+ - Fixed bug for multiple PCF installations using same tile
+ - TierName, NodeName and UniqueHostID suffixed with DomainName
+
+How to upgrade ?
+
+ - In the Ops Manager, import the new tile binary using "Import a Product" button
+ ![Import Product](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager1.png)
+ - Once imported, click on Upgrade button on the left panel for AppDynamics
+ ![Upgrade](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager2.png)
+ - If you have multiple PCF installations, update the **Application name** for **Machine Agent Extension**  so that Application name for each Machine Agent Extension would be unique across PCF installations. Save these changes.
+ ![Application Name for MachineAgent](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager3.png)
+ - You might have to import a new stem cell version 3146.8 from [here](http://bosh.io/stemcells)
+ ![Upgrade Stem Cell](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager4.png)
+ - Once the tile is ready, click on "Apply Changes". This will upgrade your tile to version 1.0.1
+ ![Apply Changes](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager5.png)
