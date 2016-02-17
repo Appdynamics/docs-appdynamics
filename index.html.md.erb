@@ -89,6 +89,7 @@ Not applicable.
       running.
     * Ensure that the Collector instance is set to `1` in the Pivotal Elastic 
       Runtime Tile.
+    * Give a user-defined application name. This name should be unique across multiple PCF installations.
     * Complete the AppDynamics Controller, Account Name, and Account Access 
       Keys fields.
         <%= image_tag("appdynamics/images/machine-agent.png") %>
@@ -247,7 +248,8 @@ Also, refer to next section on limitations around Buildpacks.
 * Currently supported Buildpacks bundling AppDynamics Agent are the Java and PHP Buildpacks. 
     * Java Buildpack 3.4 and later
 	    * Use the latest buildpack or online Java buildpack (use `-b https://github.com/cloudfoundry/java-buildpack` or specify via manifest) when pushing apps that would consume the AppDynamics Services
-    * PHP Buildpack 4.0+
+    * PHP Buildpack
+            * Use the custom AppDynamics PHP Buildpack https://github.com/Appdynamics/php-buildpack which identifies the AppDynamics service
 * Similar support would be built for other language buildpacks in future releases. 
 
 ##<a id='feedback'></a>Feedback ##
