@@ -1,2 +1,2 @@
 # docs-appdynamics
-Documentaiton for AppDynamics APM Tile
+Documentation for AppDynamics APM Tile
