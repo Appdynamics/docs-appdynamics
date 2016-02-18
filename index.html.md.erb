@@ -12,7 +12,7 @@ A Service Broker allows Cloud Foundry applications to bind to services and consu
 
 The AppDynamics Machine Agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard. 
 
-The Pivotal Cloud Foundry&reg; (PCF) Tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension. This makes the installation and subsequent use of AppDynamics on your Cloud Foundry applications simple and easy, while also allowing monitoring and gathering of metrics of all virtual machines related to Cloud Foundry through a single interface. 
+The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension. This makes the installation and subsequent use of AppDynamics on your Cloud Foundry applications simple and easy, while also allowing monitoring and gathering of metrics of all virtual machines related to Cloud Foundry through a single interface. 
 
 ##<a id='trial'></a>Trial License ##
 
@@ -21,7 +21,7 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 ##<a id='product-snapshot'></a>Product Snapshot ##
 
 <dl>
-<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM Tile</a> for Pivotal Cloud Foundry&reg; details:</dt>
+<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM tile</a> for Pivotal Cloud Foundry&reg; details:</dt>
 <dd><strong>Version</strong>: 1.0</dd>
 <dd><strong>Release Date</strong>: 2015-12-17</dd>
 <dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0</dd>
@@ -35,7 +35,7 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 
 ##<a id='upgrading'></a>Upgrading to the Latest Version ##
 
-Not applicable.
+See the [upgrading](./upgrade.html) topic.
 
 ##<a id='installing'></a> Install via Pivotal Ops Manager ##
 
@@ -85,10 +85,10 @@ Not applicable.
     * Optionally, create additional service plans for the same account key. 
 
 1. Configure the Machine Agent Extension.
-    * Ensure that the Pivotal Ops Metrics Tile has been installed and JMX VM is 
+    * Ensure that the Pivotal Ops Metrics tile has been installed and JMX VM is 
       running.
     * Ensure that the Collector instance is set to `1` in the Pivotal Elastic 
-      Runtime Tile.
+      Runtime tile.
     * Give a user-defined application name. This name should be unique across multiple PCF installations.
     * Complete the AppDynamics Controller, Account Name, and Account Access 
       Keys fields.
@@ -210,8 +210,8 @@ Example:
 
 If the machine agent does not expose any metrics in the AppDynamics dashboard:
 
-* Ensure the collector instance is running in Elastic Runtime Tile
-* Ensure the Ops Metrics Tile is installed and verify the admin credentials, IP address, and port of the Metrics instance
+* Ensure the collector instance is running in Elastic Runtime tile.
+* Ensure the Ops Metrics Tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
 * If a proxy exists, the Machine Agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
 
 <pre class='terminal'>

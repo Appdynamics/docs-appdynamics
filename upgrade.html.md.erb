@@ -1,4 +1,6 @@
-d='limitations'></a>Upgrade ##
+---
+title: Upgrading to v1.0.1
+---
 
 **v1.0.1**
 
@@ -10,15 +12,19 @@ Features included in this release:
  - Fixed machine agent related issue for multiple PCF installations
  - TierName, NodeName and UniqueHostID suffixed with DomainName
 
-How to upgrade ?
+## Upgrade AppDynamics APM ##
 
- - In the Ops Manager, import the new tile binary using "Import a Product" button
- ![Import Product](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager1.png)
- - Once imported, click on Upgrade button on the left panel for AppDynamics
- ![Upgrade](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager2.png)
- - If you have multiple PCF installations, update the **Application name** for **Machine Agent Extension**  so that Application name for each Machine Agent Extension would be unique across PCF installations. Save these changes.
- ![Application Name for MachineAgent](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager3.png)
- - You might have to import a new stem cell version 3146.8 from [here](http://bosh.io/stemcells)
- ![Upgrade Stem Cell](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager4.png)
- - Once the tile is ready, click on "Apply Changes". This will upgrade your tile to version 1.0.1
- ![Apply Changes](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager5.png)
+1. In Ops Manager, click **Import a Product** to import new tile binary.
+  ![Import Product](images/Ops_Manager1.png)
+
+2. Once imported, click **Upgrade** on the left panel for AppDynamics.
+  ![Upgrade](images/Ops_Manager2.png)
+
+3. If you have multiple PCF installations, update the **Application Name** for **Machine Agent Extension** so that the Application name for each Machine Agent Extension is unique across PCF installations. Save these changes.
+  ![Application Name for MachineAgent](images/Ops_Manager3.png)
+
+4. You might have to import a new stem cell version 3146.8 from  [http://bosh.io/stemcells](http://bosh.io/stemcells).
+![Upgrade Stem Cell](images/Ops_Manager4.png)
+
+5. Once the tile is ready, click **Apply Changes**. This will upgrade your tile to version 1.0.1.
+  ![Apply Changes](images/Ops_Manager5.png)
