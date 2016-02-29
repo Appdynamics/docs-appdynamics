@@ -14,6 +14,8 @@ The AppDynamics Machine Agent extension is a separate application that can consu
 
 The Pivotal Cloud Foundry&reg; (PCF) Tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension. This makes the installation and subsequent use of AppDynamics on your Cloud Foundry applications simple and easy, while also allowing monitoring and gathering of metrics of all virtual machines related to Cloud Foundry through a single interface. 
 
+![Components](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Components.png)
+
 ##<a id='trial'></a>Trial License ##
 
 Users interested in AppDynamics can sign up for a [free trial license](https://portal.appdynamics.com/account/signup/signupForm).
@@ -35,7 +37,7 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 
 ##<a id='upgrading'></a>Upgrading to the Latest Version ##
 
-Not applicable.
+[Upgrade AppDynamics Tile](http://docs.pivotal.io/appdynamics/upgrade.html)
 
 ##<a id='installing'></a> Install via Pivotal Ops Manager ##
 
@@ -249,7 +251,11 @@ Also, refer to next section on limitations around Buildpacks.
     * Java Buildpack 3.4 and later
 	    * Use the latest buildpack or online Java buildpack (use `-b https://github.com/cloudfoundry/java-buildpack` or specify via manifest) when pushing apps that would consume the AppDynamics Services
     * PHP Buildpack
-            * Use the custom AppDynamics PHP Buildpack https://github.com/Appdynamics/php-buildpack which identifies the AppDynamics service
+         * Use the custom AppDynamics PHP Buildpack https://github.com/Appdynamics/php-buildpack which identifies the AppDynamics service
+    * NodeJS Buildpack
+         * Use the custom AppDynamics NodeJS Buildpack https://github.com/Appdynamics/nodejs-buildpack which identifies the AppDynamics service
+    * IBM WebSphere Liberty Buildpack
+         * Use the custom AppDynamics NodeJS Buildpack https://github.com/Appdynamics/ibm-websphere-liberty-buildpack which identifies the AppDynamics service
 * Similar support would be built for other language buildpacks in future releases. 
 
 ##<a id='feedback'></a>Feedback ##
