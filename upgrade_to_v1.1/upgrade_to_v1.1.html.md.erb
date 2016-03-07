@@ -1,0 +1,25 @@
+d='limitations'></a>Upgrade ##
+
+###**v1.1**
+
+**Release Date: 24th June 2016**
+
+Features included in this release:
+
+ - Added support for AppDynamics **Database Monitoring**
+ - Added support for AppDynamics **Transaction Analytics**
+ - **Web Proxy Config** is now a separate configuration tab
+ - Updated the stem cell version to **3146.12**
+
+**How to upgrade ?**
+
+- In the Ops Manager, import the new tile binary using **Import a Product** button
+      ![Import Product](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager1.png)
+- Once imported, click on **Upgrade** button on the left panel for AppDynamics
+        ![Upgrade](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/upgrade_button.png)
+- Configure the following sections
+- [Database Monitoring Config](https://github.com/Appdynamics/docs-appdynamics/blob/master/upgrade_to_v1.1/database_monitoring.html.md.erb)
+- [Transaction Analytics Config](https://github.com/Appdynamics/docs-appdynamics/blob/master/upgrade_to_v1.1/transaction_analytics.html.md.erb)
+- If stem-cell is not upgraded, the tile will prompt you to update the stem cell to version **3146.12**
+
+Save these configuration changes to the tile. On the Ops-Manager dashboard click on **Install Changes** button to install the updates.
