@@ -26,8 +26,8 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
 <dd><strong>Release Date</strong>: 2015-12-17</dd>
 <dd><strong>Software component version</strong>: AppDynamics Service Broker 1.0</dd>
 <dd><strong>AppDynamics Machine Agent Version</strong>: 4.1.5.3</dd>
-<dd><strong>Compatible Ops Manager Version(s)</strong>: 1.5.x, 1.6.x</dd>
-<dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.4.x, 1.5.x, 1.6.x</dd>
+<dd><strong>Compatible Ops Manager Version(s)</strong>: 1.5.x, 1.6.x, 1.7.x</dd>
+<dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.4.x, 1.5.x, 1.6.x, 1.7.x</dd>
 <dd><strong>Compatible AppDynamics Controller Version(s)</strong>: 4.x</dd>
 <dd><strong>vSphere support?</strong> Yes</dd>
 <dd><strong>AWS support?</strong> Yes</dd>
@@ -85,15 +85,15 @@ See the [upgrading](./upgrade.html) topic.
     * Optionally, create additional service plans for the same account key. 
 
 1. Configure the Machine Agent Extension.
-    * Ensure that the Pivotal Ops Metrics tile has been installed and JMX VM is 
-      running.
+    * Ensure that the JMX Bridge tile has been installed and JMX VM is 
+      running. JMX Bridge was formerly named Pivotal Ops Metrics.
     * Ensure that the Collector instance is set to `1` in the Pivotal Elastic 
       Runtime tile.
     * Give a user-defined application name. This name should be unique across multiple PCF installations.
     * Complete the AppDynamics Controller, Account Name, and Account Access 
       Keys fields.
         <%= image_tag("appdynamics/images/machine-agent.png") %>
-    * Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
+    * Fill in the JMX provider IP and port (default: 44444). Retrieve the JMX provider IP by selecting the **Status** tab within the **JMX Bridge** tile.
         <%= image_tag("appdynamics/images/jmx.png") %>
     * Fill in the credentials to connect to the server. Select the JMX 
       Authentication checkbox.
@@ -142,7 +142,7 @@ See the [upgrading](./upgrade.html) topic.
     Figure 13.1: AppDynamics App Monitoring Dashboard<br> 
     <%= image_tag("appdynamics/images/dashboard.png") %>
 
-1. To check PCF Ops metrics, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController, Router, etc.
+1. To check JMX Bridge, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController, Router, etc.
 
     <%= image_tag("appdynamics/images/view12.2.1.png") %>
 
@@ -211,7 +211,7 @@ Example:
 If the machine agent does not expose any metrics in the AppDynamics dashboard:
 
 * Ensure the collector instance is running in Elastic Runtime tile.
-* Ensure the Ops Metrics Tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
+* Ensure the JMX Bridge tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
 * If a proxy exists, the Machine Agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
 
 <pre class='terminal'>
