@@ -1,16 +1,18 @@
 ---
 title: Upgrading to v1.0.1
+owner: Partners
 ---
 
-**v1.0.1**
+###**v1.0.1**
 
 **Release Date: 20th February 2016**
 
 Features included in this release:
 
- - Updated stemcell to 3146.8
+ - Updated stemcell to 3146.9
  - Fixed machine agent related issue for multiple PCF installations
  - TierName, NodeName and UniqueHostID suffixed with DomainName
+ -  Support for **OpenTSDB Firehose Nozzle**. Support for all Cloud Foundry deployment metrics.
 
 ## Upgrade AppDynamics APM ##
 
@@ -23,8 +25,20 @@ Features included in this release:
 3. If you have multiple PCF installations, update the **Application Name** for **Machine Agent Extension** so that the Application name for each Machine Agent Extension is unique across PCF installations. Save these changes.
   ![Application Name for MachineAgent](images/Ops_Manager3.png)
 
-4. You might have to import a new stem cell version 3146.8 from  [http://bosh.io/stemcells](http://bosh.io/stemcells).
+4. You might have to import a new stem cell version 3146.9 from  [http://bosh.io/stemcells](http://bosh.io/stemcells).
 ![Upgrade Stem Cell](images/Ops_Manager4.png)
 
 5. Once the tile is ready, click **Apply Changes**. This will upgrade your tile to version 1.0.1.
   ![Apply Changes](images/Ops_Manager5.png)
+
+6. Once the tile in successfully installed, check all the Cloud Foundry deployment metrics on this path: **Metric Browser > Application Infrastructure Performance > {Tier Name} > Custom Metrics > CF**
+![enter image description here](./images/HierarchyMetricBrowser.png)
+
+**For Ops Metrics 1.6.X and above**
+
+ - Ensure the OpenTSDB instance for **Ops Metrics** is configured to run one instance in the Ops Metrics Tile.
+  ![enter image description here](./images/OpenTSDB.png)
+ - Get the IP address of the JMX Provider VM (Ops metrics VM) from **Ops Metrics Tile > Status**
+  ![enter image description here](./images/JMX_IP.png)
+ - In the **Ops Manager Director** tile's config page, set the **Metrics IP Address** with value of JMX Provider VM IP address.
+  ![enter image description here](./images/OpsManagerDirector.png)
