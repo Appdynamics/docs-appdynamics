@@ -61,6 +61,7 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
 1. Configure the Machine Agent Extension.
     * Ensure that the Pivotal Ops Metrics tile has been installed and JMX VM is
       running.
+    <p class="note"><strong>Note</strong>: In PCF 1.7, Pivotal Ops Metrics is renamed JMX Bridge.</p>
     * Ensure that the Collector instance is set to `1` in the Pivotal Elastic
       Runtime tile.
     * Give a user-defined **Application Name**. This name should be unique across multiple PCF installations.
@@ -121,7 +122,7 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
     <%= image_tag("appdynamics/images/dashboard3.png") %>
     <%= image_tag("appdynamics/images/dashboard4.png") %>
 
-1. To check PCF Ops metrics, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController and Router.
+1. To check PCF Ops Metrics, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController and Router.
 
     <%= image_tag("appdynamics/images/view12.2.1.png") %>
 
@@ -187,7 +188,7 @@ Example:
 If the machine agent does not expose any metrics in the AppDynamics dashboard:
 
 * Ensure the collector instance is running in Elastic Runtime tile.
-* Ensure the Ops Metrics Tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
+* Ensure the Ops Metrics tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
 * If a proxy exists, the Machine Agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
 
 <pre class='terminal'>
