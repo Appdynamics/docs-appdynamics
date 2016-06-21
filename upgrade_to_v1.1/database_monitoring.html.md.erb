@@ -8,14 +8,14 @@ This document will walk you through to configure database agent and see database
 
  - If your AppDynamics controller has license for Database monitoring, you can monitor databases in PCF
  - Supported DB Agent versions: **4.1.8.0, 4.1.10.0**
- - Supported Databases: ![DBSupport](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/DBSupport.png)
+ - Supported Databases: ![DBSupport](../images/DBSupport.png)
  - The database agent is compatible with controller version 4.1.8.0 and above OR 4.1.10.0 and above if using agent version 4.1.8.0 or 4.1.10.0 respectively.
 
 **Step1: Configure tile for Database Agent**
 
  - Every service plan can be configured to deploy database agents. To configure the DB agent, simply enable the checkbox for the DB monitoring, specify the supported DB agent version and specify the number of DB agents to be deployed for the service plan. 
 **NOTE: Supported DB agent versions on this tile are 4.1.8.0 and 4.1.10.0**
-![DB Config For Tile GUI](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/DB1.png)
+![DB Config For Tile GUI](../images/DB1.png)
  - Click on the SAVE button to save this configuration.
 
 Once the tile in successfully installed, each DBAgent will run as a CF application within newly created **AppDynamics-DB-Visibility** org. 
@@ -51,13 +51,13 @@ Here, `svcplan` is the name of the service plan which was configured for deployi
    app running in PCF. - Collectors are configured on the AppDynamics
    controller. To configure a database collector, go to **Databases >
    Configuration > Collectors** on the controller.
-![enter image description here](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Database2.png) 
+![enter image description here](../images/Database2.png) 
  - Now, configure a database collector using
    [this](https://docs.appdynamics.com/display/PRO41/Configure+Database+Collectors) document.
   **Note** that for the field **Database Agent** in every collector, select the DB agent name that is deployed in the PCF. For example, in the below image, we should select **DBAgent-PCF-Public-Controller-1** as the **Database Agent** and not **Default DB Agent**
-![CollectorConfig](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Database3.png) 
+![CollectorConfig](../images/Database3.png) 
  - Once the collector is configured and saved, generate some traffic on
    your application which includes database operations. After a couple
    of minutes, you should be able to see database traffic on your
    AppDynamics Database Dashboard.
-![DatabaseTraffic](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Database4.png)
+![DatabaseTraffic](../images/Database4.png)

@@ -3,9 +3,9 @@ title: Upgrading to AppDynamics APM v1.0.1
 owner: Partners
 ---
 
-<a id='upgrade'></a>Upgrade ##
+This topic describes how to upgrade to version 1.0.1 of the the AppDynamics APM tile for Pivotal Cloud Foundry (PCF). If you use Ops Metrics version 1.6.X or later, you must also [configure your Ops Metrics tile](#config).  
 
-###**v1.0.1**
+## <a id='version'></a>v1.0.1
 
 **Release Date: 20th February 2016**
 
@@ -14,28 +14,40 @@ Features included in this release:
  - Updated stemcell to 3146.9
  - Fixed machine agent related issue for multiple PCF installations
  - TierName, NodeName and UniqueHostID suffixed with DomainName
- -  Support for **OpenTSDB Firehose Nozzle**. Support for all Cloud Foundry deployment metrics.
+ -  Support for **OpenTSDB Firehose Nozzle**. Support for all Cloud Foundry deployment metrics
 
-**How to upgrade ?**
+## <a id='upgrade'></a>Upgrade AppDynamics APM
 
- - In the Ops Manager, import the new tile binary using "Import a Product" button
- ![Import Product](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager1.png)
- - Once imported, click on Upgrade button on the left panel for AppDynamics
- ![Upgrade](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager2.png)
- - If you have multiple PCF installations, update the **Application name** for **Machine Agent Extension**  so that Application name for each Machine Agent Extension would be unique across PCF installations. Save these changes.
- ![Application Name for MachineAgent](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager3.png)
- - You might have to import a new stem cell version 3146.9 from [here](http://bosh.io/stemcells)
- - Once the tile is ready, click on "Apply Changes". This will upgrade your tile to version 1.0.1
- ![Apply Changes](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Ops_Manager5.png)
- - Once the tile in successfully installed, check all the Cloud Foundry deployment metrics on this path. **Metric Browser > Application Infrastructure Performance > {Tier Name} > Custom Metrics > CF**
-![enter image description here](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/HierarchyMetricBrowser.png)
+1. In the Ops Manager, click **Import a Product** to import the new tile binary.
+	![Import Product](../images/Ops_Manager1.png)
+
+1. Once imported, click **Upgrade** on the left panel for AppDynamics. 
+	![Upgrade](../images/Ops_Manager2.png)
+
+1. If you have multiple PCF installations, update the **Application name** for **Machine Agent Extension** so that Application name for each Machine Agent Extension would is unique across PCF installations. Save these changes.
+	![Application Name for MachineAgent](../images/Ops_Manager3.png)
+
+1. If necessary, import a new stem cell version 3146.9 from http://bosh.io/stemcells. 
+	![Upgrade Stem Cell](../images/Ops_Manager4.png)
+
+1. Once the tile is ready, click **Apply Changes**. This will upgrade your tile to version 1.0.1
+	![Apply Changes](../images/Ops_Manager5.png)
+
+1. Once the tile in successfully installed, check all the Cloud Foundry deployment metrics on this path: **Metric Browser > Application Infrastructure Performance > {Tier Name} > Custom Metrics > CF**. 	
+	![enter image description here](../images/HierarchyMetricBrowser.png)
+
+1. If you use Ops Metrics version 1.6.X or later, follow the steps in the next section. 
 
 
-**For users using Ops Metrics 1.6.X and above**
+## <a id='config'></a>Configure Ops Metrics
 
- - Ensure the OpenTSDB instance for **Ops Metrics** is configured to run one instance in the Ops Metrics Tile.
-  ![enter image description here](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/OpenTSDB.png)
- - Get the IP address of the JMX Provider VM (Ops metrics VM) from **Ops Metrics Tile > Status**
-  ![enter image description here](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/JMX_IP.png)
- - In the **Ops Manager Director** tile's config page, set the **Metrics IP Address** with value of JMX Provider VM IP address.
-  ![enter image description here](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/OpsManagerDirector.png)
+<p class="note"><strong>Note</strong>: This procedure is only necessary if your Ops Metrics version 1.6.X or later.</p>
+
+1. Ensure the OpenTSDB instance for **Ops Metrics** is configured to run one instance in the Ops Metrics Tile.
+  ![enter image description here](../images/OpenTSDB.png)
+
+1. Get the IP address of the **JMX Provider** VM (Ops metrics VM) from **Ops Metrics Tile > Status**
+  ![enter image description here](../images/JMX_IP.png)
+
+1. In the **Director Config** section of the Ops Manager Director tile, set the **Metrics IP Address** to value of JMX Provider VM IP address.
+  ![enter image description here](../images/OpsManagerDirector.png)
