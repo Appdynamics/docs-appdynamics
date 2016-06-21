@@ -11,6 +11,27 @@ This document will walk you through to configure analytics agent and see transac
  - Applications supported on Analytics Agent: **Java, .NET**
  - The analytics agent is compatible with controller version 4.1.8.0 and above
 
+**How Transaction Analytics Work ?**
+The application agent forwards analytics data to the analytics agent. The analytics agent then sends this data to the event-service. The controller then queries the event service to fetch the analytics data and renders on controller dashboard.
+
+![Analytics Agent Working](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/pdf1.png)
+
+The individual components are:   
+
+ - **AppDynamics App Agent**: Application Analytics relies upon the same app agents that AppDynamics APM uses. If you already use AppDynamics APM, you likely already have these deployed to your monitored applications
+ - **Analytics Agent**: The Analytics Agent collects data from one or more app agents and sends it to the Events Service.
+ - **Analytics Plugin** (AP) to the App Agent: The Analytics Plugin extends App Agent functionality so that it can collect and forward data to the Analytics Agent.
+ - **Event Service**: The event service is a unstructured document store which acts as a place holder for analytics data. If you already do not have an event service running, please contact AppDynamics support to get one.
+ - **Controller**: The controller queries the event service and renders analytics data to the controller dashboard.
+ 
+**Deploying Analytics Agents to Multiple Nodes**
+ - A real world scenario is unlikely to consist of a single monitored node, as shown in the diagram above. It usually consists of many applications deployed over many hosts.
+ - There must be at least one Analytics Agent in the monitored environment, although multiple agent plugins collecting only transaction data can share a single Analytics Agent, as shown in the figure.
+![Realworld Scenario](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/pdf2.png)
+ - In this example, AppServerHost1-3 are collecting only transaction data, so only app agents are required.  Each one connects to the Analytics Agent on AppServerHost4, the analytics agent forwards the transaction analytics data to the event service. Finally the controller, fetches the analytics data from the event service and renders to the controller analytics dashboard.
+ 
+The below mentioned steps will guide you to configure Transaction Analytics for your applications deployed on PCF
+
 **Step1: Configure tile for Analytics**
 
 ![Analytics Config For Tile GUI](../images/Analytics1.png)
@@ -52,7 +73,16 @@ Restage the application for the changes to take affect.
 
     $ cf restage <target-app-name> 
 
-**Step3: Configure Analytics Collector on the Controller** 
+**Step3: Configure Controller to fetch data from event service** 
+Your controller should be configured, to fetch analytics data from the event-service.
+
+ - For customers who are using SaaS controllers, your controller should already be configured to fetch data from SaaS event-service.
+ - For customers who are using On-Premise controller, you need to login as an admin in your controller, and configure the event-service url and the controller key for authentication as highlighted in the below image.
+![AdminPage](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/ControllerAdminForAnalytics.png)
+
+For any help with this configuration, please contact AppDynamics support.
+
+**Step4: Configure Analytics Collector on the Controller** 
 
  - On your AppDynamics controller, configure the analytics collector for
    the target application.
@@ -66,7 +96,7 @@ Restage the application for the changes to take affect.
   - [Configure Transactions for GUID Injection](https://docs.appdynamics.com/display/PRO42/Business+Transaction+and+Log+Correlation) By configuring business transactions for GUID Injection, you can correlate logs to specific business transaction requests. This can be helpful when you see slow transactions and the call graph does not give you enough information to get to the root cause. You can use this feature to get the full context related to a failed or slow transaction.
  ![Optional Fields](../images/Analytics5.png) 
 
-**Step4: Analyze business transactions using analytics** 
+**Step5: Analyze business transactions using analytics** 
 Once this collector is configured, generate some traffic on your application and check the analytics data by clicking on the **Analytics** on your controller.
  ![Analytics Tab](../images/Analytics7.png) 
  ![Analytics Data](../images/Analytics8.png)
