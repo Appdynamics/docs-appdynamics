@@ -1,0 +1,72 @@
+d='limitations'></a>Upgrade ##
+
+###**Transaction Analytics**
+
+This document will walk you through to configure analytics agent and see transaction analytics on the AppDynamics controller.
+
+**Feature Snapshot**
+
+ - If your AppDynamics controller has license for Analytics monitoring, you can monitor application analytics
+ - Supported Analytics Agent version: **4.1.8.0**
+ - Applications supported on Analytics Agent: **Java, .NET**
+ - The analytics agent is compatible with controller version 4.1.8.0 and above
+
+**Step1: Configure tile for Analytics**
+
+![Analytics Config For Tile GUI](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics1.png)
+
+- The AppDynamics Controller license page will specify the global account name and access key required to configure the Analytics agent. ![License Page](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics2.png)
+- If you already have an AppDynamics Analytics Event Service URL, please specify the complete URL in the Analytics Event Service URL textbox. If you do not have one, please contact AppDynamics support to get one. Example: The Analytics Event Service URL should look something like this, http://analytics-event-service.com:80
+
+Once all the three required fields are configured correctly, click on the SAVE button to save this configuration.
+
+Once the updates on the tile are installed successfully, the Analytics agent will be deployed in **AppDynamicsPCFOpsMetrics-service-org** org  as an independant cf application by the name **AppDynamicsAnalytics** and with a route **`appdynamics-analytics.<domain-name>`**
+
+AppName = AppDynamicsAnalytics
+
+For Example:
+
+    $cf target -o AppDynamicsPCFOpsMetrics-service-org
+    $cf apps
+    Getting apps in org AppDynamicsPCFOpsMetrics-service-org / space AppDynamicsPCFOpsMetrics-service-space as admin...
+    OK
+    name                       requested state   instances   memory   disk   urls
+    																												       				           AppDynamicsAnalytics       stopped           0/1         1G       1G     appdynamics-analytics.10.0.34.178.xip.io
+																																	   					                                      																																									      									      
+**Step2: Bind application to analytics agent**
+
+The analytics agent is compatible with the following applications: 
+
+ - Java
+ - .NET
+
+Once the tile is deployed, we need to bind the application with the analytics agent so that the analytics agent could collect the analytics data from the target application.
+
+To do this, we need to set a JAVA system property on the application to forward data to analytics agent. Go to the org where the target application is running. 
+
+    $cf set-env <target-app-name> JAVA_OPTS "-Dappdynamics.analytics.agent.url=http://appdynamics-analytics.<domain-name>/v1/sinks/bt" 
+
+where, `http://appdynamics-analytics.<domain-name>` is the URL of the analytics agent running in **AppDynamicsPCFOpsMetrics-service-org** org 
+
+Restage the application for the changes to take affect.
+
+    $ cf restage <target-app-name> 
+
+**Step3: Configure Analytics Collector on the Controller** 
+
+ - On your AppDynamics controller, configure the analytics collector for
+   the target application.
+
+![ConfigureAnalyticsCollector](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics3.png) 
+
+- From the drop-down select the same target application for which you have set the JAVA system property in the previous step. 
+- Check Enable Analytics Data checkbox - Add transactions you wish to report analytics data ![enter image description here](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics4.png) 
+- The **HTTP Data Collectors** and **Trasactions for GUID Injection** field are optional. If you wish to configure them, refer the following documentation     
+  - [Configure HTTP Data Collectors](https://docs.appdynamics.com/display/PRO42/Configuring+Transaction+Analytics) This enables collection of additional business data using HTTP Data Collectors 
+  - [Configure Transactions for GUID Injection](https://docs.appdynamics.com/display/PRO42/Business+Transaction+and+Log+Correlation) By configuring business transactions for GUID Injection, you can correlate logs to specific business transaction requests. This can be helpful when you see slow transactions and the call graph does not give you enough information to get to the root cause. You can use this feature to get the full context related to a failed or slow transaction.
+ ![Optional Fields](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics5.png) 
+
+**Step4: Analyze business transactions using analytics** 
+Once this collector is configured, generate some traffic on your application and check the analytics data by clicking on the **Analytics** on your controller.
+ ![Analytics Tab](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics7.png) 
+ ![Analytics Data](https://github.com/Appdynamics/docs-appdynamics/blob/master/images/Analytics8.png)
