@@ -35,7 +35,7 @@ This document describes how to configure a database agent (DB agent) and see dat
 
 ## <a id="collector"></a>Step 2: Configure Database Collector
 
-Database Monitoring is accomplished by two components, the Database Agent and the AppDynamics Controller. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. The Database Agent does not need to be installed on the same system hosting the database server.
+The Database Agent and the AppDynamics Controller work together to monitor a database. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. The Database Agent does not need to be installed on the same system hosting the database server.
 
 <p class="note"><strong>Note</strong>: Since each DB agent starts with 1G of memory, AppDynamics reccomends configuring at most two DB collectors for each DBAgent app running in Pivotal Cloud Foundry (PCF).</p>
 
@@ -43,7 +43,7 @@ Database Monitoring is accomplished by two components, the Database Agent and th
   ![Database collector](../images/Database2.png) 
 
 1. Configure a database collector using the [Configure Database Collectors](https://docs.appdynamics.com/display/PRO41/Configure+Database+Collectors) topic from the AppDynamics docs.
-  - For the field **Database Agent** in every collector, select the DB agent name deployed in PCF. In the example image below, you choose **DBAgent-PCF-Public-Controller-1** as the **Database Agent** and not **Default DB Agent**
+  - For the **Database Agent** field in every collector, select the DB agent name deployed in PCF. In the example image below, you choose **DBAgent-PCF-Public-Controller-1** as the **Database Agent** and not **Default DB Agent**
     ![CollectorConfig](../images/Database3.png) 
 1. Once you configure and save the collector, generate some traffic on
    an application that includes database operations. After a couple

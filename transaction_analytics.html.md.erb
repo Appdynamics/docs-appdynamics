@@ -16,27 +16,27 @@ This document describes how to configure an analytics agent and view transaction
 
 ### <a id="overview"></a>Overview
 
-The application agent forwards analytics data to the analytics agent. The analytics agent then sends this data to the event-service. The controller then queries the event service to fetch the analytics data and renders on controller dashboard.
+The application agent forwards analytics data to the analytics agent, which sends the data to the event-service. The controller queries the event service to fetch the analytics data and renders it on controller dashboard. The following image provides a visualization of the process: 
 
 ![Analytics Agent Working](../images/pdf1.png)
 
-The individual components are:   
+The following list describes the components in the image above:   
 
- - **AppDynamics App Agent**: Application Analytics relies upon the same app agents that AppDynamics APM uses. If you already use AppDynamics APM, you likely already have these deployed to your monitored applications
+ - **AppDynamics App Agent**: Application Analytics relies on the same app agents that AppDynamics APM uses. If you already use AppDynamics APM, you likely already have these deployed to your monitored applications
  - **Analytics Agent**: The Analytics Agent collects data from one or more app agents and sends it to the Events Service.
  - **Analytics Plugin** (AP) to the App Agent: The Analytics Plugin extends App Agent functionality so that it can collect and forward data to the Analytics Agent.
- - **Event Service**: The event service is a unstructured document store which acts as a place holder for analytics data. If you already do not have an event service running, please contact AppDynamics support to get one.
+ - **Event Service**: The event service is a unstructured document store which acts as a place holder for analytics data. If you do not already have an event service running, contact AppDynamics support to get one.
  - **Controller**: The controller queries the event service and renders analytics data to the controller dashboard.
  
 ### <a id="multi-node"></a>Deploying Analytics Agents to Multiple Nodes
 
 A real world scenario is unlikely to consist of a single monitored node, as shown in the diagram above. It usually consists of many applications deployed over many hosts.
 
-There must be at least one Analytics Agent in the monitored environment, although multiple agent plugins collecting only transaction data can share a single Analytics Agent, as shown in the figure.
+There must be at least one Analytics Agent in the monitored environment, although multiple agent plugins collecting only transaction data can share a single Analytics Agent, as shown in the following figure:
 
 ![Realworld Scenario](../images/pdf2.png)
 
-In this example, AppServerHost1-3 are collecting only transaction data, so only app agents are required.  Each one connects to the Analytics Agent on AppServerHost4, the analytics agent forwards the transaction analytics data to the event service. Finally the controller, fetches the analytics data from the event service and renders to the controller analytics dashboard.
+In this example, AppServerHost1-3 collect only transaction data, and only app agents are required.  Each one connects to the Analytics Agent on AppServerHost4. The analytics agent forwards the transaction analytics data to the event service. Finally, the controller fetches the analytics data from the event service and renders it to the controller analytics dashboard.
  
 Follow the steps below to configure Transaction Analytics for your PCF applications.
 
@@ -67,10 +67,10 @@ After deploying the tile, follow these steps to bind an application with the ana
 
 <p class="note"><strong>Note</strong>: The analytics agent is compatible with Java and .NET applications.</p>
 
-1. Set a JAVA system property on the application to forward data to analytics agent. Go to the org where the target application is running. 
-    <pre class="terminal">$ cf set-env <target-app-name> JAVA_OPTS "-Dappdynamics.analytics.agent.url=http://appdynamics-analytics.<domain-name>/v1/sinks/bt"</pre>
+1. Set a JAVA system property on the application to forward data to analytics agent.
+    <pre class="terminal">$ cf set-env TARGET-APP-NAME JAVA_OPTS "-Dappdynamics.analytics.agent.url=<span>http:</span>//appdynamics-analytics.DOMAIN-NAME/v1/sinks/bt"</pre>
      
-    where, `http://appdynamics-analytics.<domain-name>` is the URL of the analytics agent running in **AppDynamicsPCFOpsMetrics-service-org** org 
+    In the example above, `http://appdynamics-analytics.DOMAIN-NAME` is the URL of the analytics agent running in **AppDynamicsPCFOpsMetrics-service-org** org 
 
 1. Restage the application for the changes to take affect.
 
