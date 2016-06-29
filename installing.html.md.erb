@@ -77,11 +77,22 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
         <%= image_tag("appdynamics/images/proxy.png") %>
     1. If the HTTP Web Proxy requires authentication, select the **HTTP Web Proxy
       Auth Enabled** checkbox and supply values for username and password.
-        * Fill in any text value for the **Web Proxy Password**, even if the proxy
+        1. Fill in any text value for the **Web Proxy Password**, even if the proxy
           does not require authentication.
     1. Save the changes.
 
 1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile. 
+
+1. Select **Web Proxy Configuration**.
+![ProxyServerConfig](images/Proxy_Server_Config.png)
+
+1. To use a proxy server between your PCF instance and the AppDynamics Controller, select **Enable** and complete the following fields:
+     * **Web Proxy Host Name/IP**: Enter the IP address or host name of the proxy server, for example `10.40.23.54` OR `testproxyserver.com`
+     * **Web Proxy Port**: Enter the port number on which the proxy server listens.
+     * **HTTP Web Proxy Auth Enabled**: If your proxy server requires authentication, select this checkbox and complete the following fields:
+         * **Web Proxy Username**: Enter the username for authenticating with the proxy server. The default for no authentication `_none_`.
+         * **Web Proxy Password**: Enter the password for authenticating with the proxy server. The default for no authentication is `0000`.
+     * Click **Save**.
 
 1. Apply your changes.
 
