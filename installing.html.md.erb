@@ -36,53 +36,52 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
 1. From the **Ops Manager Installation Dashboard**, click the **AppDynamics Service Broker** tile.
 <%= image_tag("appdynamics/images/select.png") %>
 
-1. Configure the AppDynamics Service Broker.
+1. Select **Service Broker Application**.
         <%= image_tag("appdynamics/images/default.png") %>
-    * Before creating Service Plans, you must collect the license keys from the
+    1. Before creating Service Plans, you must collect the license keys from the
       AppDynamics Dashboard.
-        * Log in to your AppDynamics account and click the "Settings" gear icon
+        1. Log in to your AppDynamics account and click the "Settings" gear icon
         in the upper right corner of the page.<br>
           <%= image_tag("appdynamics/images/settings.png") %>
-        * Select **License**.<br>
+        1. Select **License**.<br>
           <%= image_tag("appdynamics/images/license.png") %>
-        * Record the details of the license access key and controller.
+        1. Record the details of the license access key and controller.
           <%= image_tag("appdynamics/images/details.png") %>
-    * Click **Add** on the far right of the Service Plan screen to create a new
+    1. Click **Add** on the far right of the Service Plan screen to create a new
       service plan.
-    * Enter the **Account Name** and **Account Access Key** from the license page along with
-      controller binding credentials (`ip`, `port`, `ssl-enabled`). The plan name and
-      plan description are user-defined.
+    1. Enter the **Account Name** and **Account Access Key** from the license page along with controller binding credentials (`ip`, `port`, `ssl-enabled`). The plan name and plan description are user-defined.
 
         <%= image_tag("appdynamics/images/create-plan.png") %>
-  * Optionally, follow the instructions in the [Configuring Database Monitoring](databsase_monitoring.html) topic to complete the database fields.
-	* Click **Save** to save the information for this plan.
-  * Optionally, create additional service plans for the same account key.
 
-1. Configure the Machine Agent Extension.
-    * Ensure that the Pivotal Ops Metrics tile has been installed and JMX VM is
+    1. Optionally, create additional service plans for the same account key.
+    1. Follow the instructions in the [Configuring Database Monitoring](databsase_monitoring.html) topic to complete the database fields.
+    1. Click **Save** to save the information for this plan.
+  
+1. Select **Machine Agent Extension**.
+    1. Ensure that the Pivotal Ops Metrics tile has been installed and JMX VM is
       running.
     <p class="note"><strong>Note</strong>: In PCF 1.7, Pivotal Ops Metrics is renamed JMX Bridge.</p>
-    * Ensure that the Collector instance is set to `1` in the Pivotal Elastic
+    1. Ensure that the Collector instance is set to `1` in the Pivotal Elastic
       Runtime tile.
-    * Give a user-defined **Application Name**. This name should be unique across multiple PCF installations.
-    * Complete the **AppDynamics Controller**, **Account Name**, and **Account Access
+    1. Give a user-defined **Application Name**. This name should be unique across multiple PCF installations.
+    1. Complete the **AppDynamics Controller**, **Account Name**, and **Account Access
       Keys** fields.
         <%= image_tag("appdynamics/images/machine-agent.png") %>
-    * Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
+    1. Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
         <%= image_tag("appdynamics/images/jmx.png") %>
-    * Fill in the credentials to connect to the server. Select the **JMX
+    1. Fill in the credentials to connect to the server. Select the **JMX
       Authentication** checkbox.
-    * If a Web Proxy for outbound HTTP(S) communications exists, select the
+    1. If a Web Proxy for outbound HTTP(S) communications exists, select the
       HTTP Web Proxy Enabled checkbox and fill in the connections details for
       the proxy.<br>
         <%= image_tag("appdynamics/images/proxy.png") %>
-    * If the HTTP Web Proxy requires authentication, select the **HTTP Web Proxy
+    1. If the HTTP Web Proxy requires authentication, select the **HTTP Web Proxy
       Auth Enabled** checkbox and supply values for username and password.
         * Fill in any text value for the **Web Proxy Password**, even if the proxy
           does not require authentication.
-    * Save the changes.
+    1. Save the changes.
 
-1. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the **Analytics Agent** section of the tile. 
+1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile. 
 
 1. Apply your changes.
 
