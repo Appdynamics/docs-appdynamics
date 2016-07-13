@@ -58,7 +58,7 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
     1. Click **Save** to save the information for this plan.
   
 1. Select **Machine Agent Extension**.
-    1. Ensure that the Pivotal Ops Metrics tile has been installed and JMX VM is
+    1. Ensure that the Pivotal Ops Metrics/JMX Bridge tile has been installed and JMX VM is
       running.
     <p class="note"><strong>Note</strong>: In PCF 1.7, Pivotal Ops Metrics is renamed JMX Bridge.</p>
     1. Ensure that the Collector instance is set to `1` in the Pivotal Elastic
@@ -67,10 +67,12 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
     1. Complete the **AppDynamics Controller**, **Account Name**, and **Account Access
       Keys** fields.
         <%= image_tag("appdynamics/images/machine-agent.png") %>
-    1. Fill in the Ops Metrics JMX Server IP and Port (default: 44444).
-        <%= image_tag("appdynamics/images/jmx.png") %>
+    1. Fill in the JMX Bridge Server IP and Port (default: 44444).
+        <%= image_tag("appdynamics/images/JMX_Bridge.png") %>
     1. Fill in the credentials to connect to the server. Select the **JMX
       Authentication** checkbox.
+    1. If the JMX Bridge tile is SSL enabled, provide the SSL certificate from JMX Bridge
+      <%= image_tag("appdynamics/images/SSL_Certificate.png") %>
     1. Save the changes.
 
 1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile. 
@@ -193,7 +195,7 @@ Example:
 If the machine agent does not expose any metrics in the AppDynamics dashboard:
 
 * Ensure the collector instance is running in Elastic Runtime tile.
-* Ensure the Ops Metrics tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
+* Ensure the JMX Bridge tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
 * If a proxy exists, the Machine Agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
 
 <pre class='terminal'>
@@ -219,6 +221,3 @@ Refer to the following links for more information:
 * [App Agent for Java Configuration Properties: Proxy Properties for the Controller](https://docs.appdynamics.com/display/PRO14S/App+Agent+for+Java+Configuration+Properties#AppAgentforJavaConfigurationProperties-ProxyPropertiesfortheController), from the AppDynamics Documentation.
 * [Machine Agent Configuration Properties: Proxy Properties for the Controller](https://docs.appdynamics.com/display/PRO14S/Machine+Agent+Configuration+Properties#MachineAgentConfigurationProperties-ProxyPropertiesfortheController), from the AppDynamics Documentation.
 * [Cloud Foundry Buildpacks in Restricted Networks](http://blog.grogscave.net/2015/02/cloud-foundry-buildpacks-in-restricted.html), from Chris DeLashmutt's blog.
-
-
-
