@@ -71,8 +71,10 @@ The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynami
         <%= image_tag("appdynamics/images/JMX_Bridge.png") %>
     1. Fill in the credentials to connect to the server. Select the **JMX
       Authentication** checkbox.
-    1. If the JMX Bridge tile is SSL enabled, provide the SSL certificate from JMX Bridge tile.
-      <%= image_tag("appdynamics/images/SSL_Certificate.png") %>
+    1. The AppDynamics tile does not support communication with JMX Bridge over SSL. In the **JMX Provider** section of the JMX Bridge tile, ensure that the **Enable SSL** checkbox is not selected. 
+        <%= image_tag("appdynamics/images/DisabledJMXBridge.png") %>
+    1. Disable SSL in the AppDynamics tile.
+        <%= image_tag("appdynamics/images/DisabledSSL.png") %>
     1. Save the changes.
 
 1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile. 
