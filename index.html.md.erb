@@ -3,15 +3,15 @@ title: AppDynamics APM
 owner: Partners
 ---
 
-This is documentation for the Pivotal Cloud Foundry (PCF) [AppDynamics APM](https://network.pivotal.io/products/p-appdynamics) tile.
+This is documentation for the Pivotal Cloud Foundry&reg; (PCF) [AppDynamics APM](https://network.pivotal.io/products/p-appdynamics) tile.
 
 AppDynamics APM supports performance monitoring of application and machine metrics. AppDynamics agent code embedded or bundled with an application instruments the application code and publishes performance monitoring metrics and other details back to the AppDynamics APM Dashboard.
 
 ##<a id='product-snapshot'></a>Product Snapshot ##
 
 <dl>
-<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM tile</a> for Pivotal Cloud Foundry details:</dt>
-<dd><strong>Version</strong>: 1.1.1</dd>
+<dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM tile</a> for Pivotal Cloud Foundry&reg; details:</dt>
+<dd><strong>Version</strong>: 1.1.2</dd>
 <dd><strong>Release Date</strong>: 2016-07-26</dd>
 <dd><strong>AppDynamics Machine Agent Version</strong>: 4.1.5.3</dd>
 <dd><strong>AppDynamics Database Agent Version</strong>: 4.1.8.0, 4.1.10.0</dd>
@@ -34,8 +34,8 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
   * [Configuring Transaction Analytics](transaction_analytics.html)
 
 ##<a id="upgrade"></a> Upgrading ##
-  * [Upgrading to AppDynamics APM 1.0.1](upgrade_to_1_0_1.html)
-  * [Upgrading to AppDynamics APM 1.1.1](upgrade_to_1_1_1.html)
+  * [Upgrading to AppDynamics APM 1.0.1](upgrade_to_1.0.1.html)
+  * [Upgrading to AppDynamics APM 1.1.2](upgrade_to_1.1.2.html)
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks##
 
@@ -45,7 +45,7 @@ Review the [Packaging Dependencies for Offline Buildpacks](http://docs.pivotal.i
 
 * Currently supported Buildpacks bundling AppDynamics Agent are the Java and PHP Buildpacks.
     * Java Buildpack 3.4 and later
-      * Use the custom AppDynamics Java Buildpack https://github.com/Appdynamics/java-buildpack which identifies the AppDynamics service
+      * Use the latest buildpack or online Java buildpack (use `-b https://github.com/cloudfoundry/java-buildpack` or specify via manifest) when pushing apps that would consume the AppDynamics Services
     * PHP Buildpack
        * Use the custom AppDynamics PHP Buildpack https://github.com/Appdynamics/php-buildpack which identifies the AppDynamics service
     * NodeJS Buildpack

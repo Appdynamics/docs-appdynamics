@@ -7,14 +7,14 @@ This topic explains how to install and configure AppDynamics APM for Pivotal Clo
 
 The AppDynamics Machine Agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard.
 
-The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension.
+The Pivotal Cloud Foundry&reg; (PCF) tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension.
 
 ![Components](./images/Components.png)
 
 ##<a id='installing'></a> Installing the AppDynamics Tile ##
 
 1. Download the product file from the [AppDynamics Product page](https://network.pivotal.io/products/p-appdynamics) on the [Pivotal Network](https://network.pivotal.io/).
-1. Log in to the Pivotal Cloud Foundry Ops Manager.
+1. Log in to the Pivotal Cloud Foundry&reg; Ops Manager.
 1. Click **Import a Product** and import the AppDynamics product file.
 
     <%= image_tag("appdynamics/images/import-product.png") %>
@@ -54,9 +54,9 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
         <%= image_tag("appdynamics/images/create-plan.png") %>
 
     1. Optionally, create additional service plans for the same account key.
-    1. Follow the instructions in the [Configuring Database Monitoring](database_monitoring.html) topic to complete the database fields.
+    1. Follow the instructions in the [Configuring Database Monitoring](databsase_monitoring.html) topic to complete the database fields.
     1. Click **Save** to save the information for this plan.
-
+  
 1. Select **Machine Agent Extension**.
     1. Ensure that the Pivotal Ops Metrics/JMX Bridge tile has been installed and JMX VM is
       running.
@@ -71,13 +71,13 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
         <%= image_tag("appdynamics/images/JMX_Bridge.png") %>
     1. Fill in the credentials to connect to the server. Select the **JMX
       Authentication** checkbox.
-    1. The AppDynamics tile does not support communication with JMX Bridge over SSL. In the **JMX Provider** section of the JMX Bridge tile, ensure that the **Enable SSL** checkbox is not selected.
+    1. The AppDynamics tile does not support communication with JMX Bridge over SSL. In the **JMX Provider** section of the JMX Bridge tile, ensure that the **Enable SSL** checkbox is not selected. 
         <%= image_tag("appdynamics/images/DisabledJMXBridge.png") %>
     1. Disable SSL in the AppDynamics tile.
         <%= image_tag("appdynamics/images/DisabledSSL.png") %>
     1. Save the changes.
 
-1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile.
+1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile. 
 
 1. Select **Web Proxy Configuration**.
 ![ProxyServerConfig](images/Proxy_Server_Config.png)
@@ -87,7 +87,7 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
      * **Web Proxy Port**: Enter the port number on which the proxy server listens.
      * **HTTP Web Proxy Auth Enabled**: If your proxy server requires authentication, select this checkbox and complete the following fields:
          * **Web Proxy Username**: Enter the username for authenticating with the proxy server. The default for no authentication `_none_`.
-         * **Web Proxy Password**: Enter the password for authenticating with the proxy
+         * **Web Proxy Password**: Enter the password for authenticating with the proxy 
 
 1. Click **Save**.
 
@@ -103,7 +103,7 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
  $ cf push APPNAME -b  https:/<span>/</span>github.com/appdynamics/php-buildpack
     </pre>
 
-1. When finished configuring the AppDynamics tile, return to the **Ops Manager Installation Dashboard** and click **Apply Changes**.
+1. When finished configuring the AppDynamics tile, return to the **Ops Manager Installation Dashboard** and click **Apply Changes**. 
 
 1. Log in to Apps Manager and navigate to the Services Marketplace.
 
