@@ -54,7 +54,7 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
         <%= image_tag("appdynamics/images/create-plan.png") %>
 
     1. Optionally, create additional service plans for the same account key.
-    1. Follow the instructions in the [Configuring Database Monitoring](databsase_monitoring.html) topic to complete the database fields.
+    1. Follow the instructions in the [Configuring Database Monitoring](database_monitoring.html) topic to complete the database fields.
     1. Click **Save** to save the information for this plan.
   
 1. Select **Machine Agent Extension**.
@@ -71,13 +71,13 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
         <%= image_tag("appdynamics/images/JMX_Bridge.png") %>
     1. Fill in the credentials to connect to the server. Select the **JMX
       Authentication** checkbox.
-    1. The AppDynamics tile does not support communication with JMX Bridge over SSL. In the **JMX Provider** section of the JMX Bridge tile, ensure that the **Enable SSL** checkbox is not selected. 
+    1. The AppDynamics tile does not support communication with JMX Bridge over SSL. In the **JMX Provider** section of the JMX Bridge tile, clear the **Enable SSL** checkbox. 
         <%= image_tag("appdynamics/images/DisabledJMXBridge.png") %>
     1. Disable SSL in the AppDynamics tile.
         <%= image_tag("appdynamics/images/DisabledSSL.png") %>
     1. Save the changes.
 
-1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete the this section of the tile. 
+1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete this section of the tile. 
 
 1. Select **Web Proxy Configuration**.
 ![ProxyServerConfig](images/Proxy_Server_Config.png)
@@ -87,7 +87,7 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
      * **Web Proxy Port**: Enter the port number on which the proxy server listens.
      * **HTTP Web Proxy Auth Enabled**: If your proxy server requires authentication, select this checkbox and complete the following fields:
          * **Web Proxy Username**: Enter the username for authenticating with the proxy server. The default for no authentication `_none_`.
-         * **Web Proxy Password**: Enter the password for authenticating with the proxy 
+         * **Web Proxy Password**: Enter the password for authenticating with the proxy. 
 
 1. Click **Save**.
 
