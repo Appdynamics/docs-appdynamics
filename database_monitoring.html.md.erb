@@ -7,18 +7,20 @@ This document describes how to configure a database agent (DB agent) and see dat
 
 ## <a id="snapshot"></a>Feature Snapshot
 
- - Database Monitoring feature is supported on version 1.1.1 and onwards
+ - AppDynamics supports database monitoring in v1.1.1 and later
  - If your AppDynamics controller has license for Database monitoring, you can monitor databases in PCF
- - Supported DB agent versions: **4.1.8.0, 4.1.10.0**
+ - Supported DB agent **v4.1.8.0, v4.1.10.0**
  - Supported databases: 
   ![DBSupport](../images/DBSupport.png)
- - The DB agent is compatible with controller version 4.1.8.0 and above OR 4.1.10.0 and above if using agent version 4.1.8.0 or 4.1.10.0 respectively.
+ - The DB agent is compatible with controller v4.1.8.0 and above OR v4.1.10.0 and above if using agent v4.1.8.0 or v
+Max Hufnagel [2:46 PM]  
+We strongly discourage the use of periods in a URL string. Periods in URL strings can cause many bits of analytics, tracking, and sharing things to break. For example, some Twitter clients will break the URL at the period. This frustrates humans and negatively impacts SEO.4.1.10.0 respectively.
 
 ## <a id="agent"></a>Step 1: Configure Tile for Database Agent
 
 1. You can configure any service plan to deploy DB agents. To configure a DB agent:
   1. Select the **Enable Database Monitoring** checkbox. 
-  1. Specify a supported DB agent version. This tile supports DB Agent versions 4.1.8.0 and 4.1.10.0. 
+  1. Specify a supported DB agent version. This tile supports DB Agent v4.1.8.0 and v4.1.10.0. 
   1. Specify the number of DB agents to deploy for the service plan.
   1. Click **Save**.  
     ![DB Config For Tile GUI](../images/DB1.png)
@@ -38,7 +40,7 @@ This document describes how to configure a database agent (DB agent) and see dat
 
 The Database Agent and the AppDynamics Controller work together to monitor a database. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. The Database Agent does not need to be installed on the same system hosting the database server.
 
-<p class="note"><strong>Note</strong>: Since each DB agent starts with 1G of memory, AppDynamics reccomends configuring at most two DB collectors for each DBAgent app running in Pivotal Cloud Foundry (PCF).</p>
+<p class="note"><strong>Note</strong>: Because each DB agent starts with 1G of memory, AppDynamics reccommends configuring at most two DB collectors for each DBAgent app running in Pivotal Cloud Foundry (PCF).</p>
 
 1. Open the Appdynamics controller and go to **Databases > Configuration > Collectors**.
   ![Database collector](../images/Database2.png) 
