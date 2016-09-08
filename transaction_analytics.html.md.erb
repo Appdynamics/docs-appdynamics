@@ -7,6 +7,7 @@ This document describes how to configure an analytics agent and view transaction
 
 ## <a id="snapshot"></a>Feature Snapshot
 
+ - Transaction Analytics feature is supported on version 1.1.1 and onwards.
  - If your AppDynamics controller has license for Analytics monitoring, you can monitor application analytics.
  - Supported Analytics Agent version: **4.1.8.0**.
  - Applications supported on Analytics Agent: **Java, .NET**.
@@ -25,7 +26,7 @@ The following list describes the components in the image above:
  - **AppDynamics App Agent**: Application Analytics relies on the same app agents that AppDynamics APM uses. If you already use AppDynamics APM, you likely already have these deployed to your monitored applications
  - **Analytics Agent**: The Analytics Agent collects data from one or more app agents and sends it to the Events Service.
  - **Analytics Plugin** (AP) to the App Agent: The Analytics Plugin extends App Agent functionality so that it can collect and forward data to the Analytics Agent.
- - **Event Service**: The event service is an unstructured document store which acts as a place holder for analytics data. If you do not already have an event service running, contact AppDynamics support to get one.
+ - **Event Service**: The event service is a unstructured document store which acts as a place holder for analytics data. If you do not already have an event service running, contact AppDynamics support to get one.
  - **Controller**: The controller queries the event service and renders analytics data to the controller dashboard.
  
 ### <a id="multi-node"></a>Deploying Analytics Agents to Multiple Nodes
@@ -79,7 +80,7 @@ After deploying the tile, follow these steps to bind an application with the ana
 ## <a id="step3"></a>Step 3: Configure Controller to Fetch Data from Event Service
 
  - **For customers using SaaS controllers**: Your controller is already configured to fetch data from SaaS event-service.
- - **For customers using on-premise controller**: Login as an admin in your controller and configure the event-service url and the controller key for authentication as shown in the below image.
+ - **For customers using and on-premise controller**: Login as an admin in your controller and configure the event-service url and the controller key for authentication as shown in the below image.
 ![AdminPage](../images/ControllerAdminForAnalytics.png)
   For any help with this configuration, contact AppDynamics support.
 
@@ -93,7 +94,7 @@ On your AppDynamics controller, follow these steps to configure the analytics co
 1. Select the checkbox to enable analytics data. 
 1. Add transactions for which you wish to report analytics data.
    ![enter image description here](../images/Analytics4.png) 
-1. Optionally, configure the **HTTP Data Collectors** and **Transactions for GUID Injection** fields. Refer the following AppDynamics documentation:    
+1. Optionally, configure the **HTTP Data Collectors** and **Trasactions for GUID Injection** fields. Refer the following AppDynamics documentation:    
   - [Configure HTTP Data Collectors](https://docs.appdynamics.com/display/PRO42/Configuring+Transaction+Analytics): This enables collection of additional business data using HTTP Data Collectors 
   - [Configure Transactions for GUID Injection](https://docs.appdynamics.com/display/PRO42/Business+Transaction+and+Log+Correlation): By configuring business transactions for GUID Injection, you can correlate logs to specific business transaction requests. This can be helpful when you see slow transactions and the call graph does not give you enough information to get to the root cause. You can use this feature to get the full context related to a failed or slow transaction.
  ![Optional Fields](../images/Analytics5.png) 

@@ -7,6 +7,7 @@ This document describes how to configure a database agent (DB agent) and see dat
 
 ## <a id="snapshot"></a>Feature Snapshot
 
+ - Database Monitoring feature is supported on version 1.1.1 and onwards
  - If your AppDynamics controller has license for Database monitoring, you can monitor databases in PCF
  - Supported DB agent versions: **4.1.8.0, 4.1.10.0**
  - Supported databases: 
@@ -35,11 +36,11 @@ This document describes how to configure a database agent (DB agent) and see dat
 
 ## <a id="collector"></a>Step 2: Configure Database Collector
 
-The Database Agent and the AppDynamics Controller work together to monitor a database. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. You do not need to install the Database Agent on the same system that hosts the database server.
+The Database Agent and the AppDynamics Controller work together to monitor a database. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. The Database Agent does not need to be installed on the same system hosting the database server.
 
-<p class="note"><strong>Note</strong>: Since each DB agent starts with 1G of memory, AppDynamics recommends configuring at most two DB collectors for each DBAgent app running in Pivotal Cloud Foundry (PCF).</p>
+<p class="note"><strong>Note</strong>: Since each DB agent starts with 1G of memory, AppDynamics reccomends configuring at most two DB collectors for each DBAgent app running in Pivotal Cloud Foundry (PCF).</p>
 
-1. Open the AppDynamics controller and go to **Databases > Configuration > Collectors**.
+1. Open the Appdynamics controller and go to **Databases > Configuration > Collectors**.
   ![Database collector](../images/Database2.png) 
 
 1. Configure a database collector using the [Configure Database Collectors](https://docs.appdynamics.com/display/PRO41/Configure+Database+Collectors) topic from the AppDynamics docs.
