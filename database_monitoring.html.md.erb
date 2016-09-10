@@ -3,27 +3,27 @@ title: Configuring Database Monitoring
 owner: Partners
 ---
 
-This document describes how to configure a database agent (DB agent) and see database  metrics on the AppDynamics controller.
+This document describes how to configure a database agent and see database  metrics on the AppDynamics controller.
 
 ## <a id="snapshot"></a>Feature Snapshot
 
  - AppDynamics supports database monitoring in v1.1.1 and later
  - If your AppDynamics controller has license for Database monitoring, you can monitor databases in PCF
- - Supported DB agent **v4.1.8.0, v4.1.10.0**
+ - Supported database agent **v4.1.8.0, v4.1.10.0**
  - Supported databases: 
   ![DBSupport](../images/DBSupport.png)
- - The DB agent is compatible with controller v4.1.8.0 and above OR v4.1.10.0 and above if using agent v4.1.8.0 or v
+ - The database agent is compatible with controller v4.1.8.0 and above OR v4.1.10.0 and above if using agent v4.1.8.0 or v4.1.10.0 respectively. 
 
 ## <a id="agent"></a>Step 1: Configure Tile for Database Agent
 
-1. You can configure any service plan to deploy DB agents. To configure a DB agent:
+1. You can configure any service plan to deploy database agents. To configure a database agent:
   1. Select the **Enable Database Monitoring** checkbox. 
-  1. Specify a supported DB agent version. This tile supports DB Agent v4.1.8.0 and v4.1.10.0. 
-  1. Specify the number of DB agents to deploy for the service plan.
+  1. Specify a supported database agent version. This tile supports database agent v4.1.8.0 and v4.1.10.0. 
+  1. Specify the number of database agents to deploy for the service plan.
   1. Click **Save**.  
     ![DB Config For Tile GUI](../images/DB1.png)
   
-1. After the tile installs, you can verify that each DBAgent runs as a CF application within the `AppDynamics-DB-Visibility` org. The name of each DBAgent application is `DBAgent-SERVICE_PLAN_NAME-INDEX`. See the following example:
+1. After the tile installs, you can verify that each database agent runs as a Cloud Foundry (CF) application within the `AppDynamics-DB-Visibility` org. The name of each database agent application is `DBAgent-SERVICE_PLAN_NAME-INDEX`. See the following example:
       <pre class="terminal">
       $ cf target -o AppDynamics-DB-Visibility 
       $ cf apps 
@@ -36,15 +36,15 @@ This document describes how to configure a database agent (DB agent) and see dat
 
 ## <a id="collector"></a>Step 2: Configure Database Collector
 
-The Database Agent and the AppDynamics Controller work together to monitor a database. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. The Database Agent does not need to be installed on the same system hosting the database server.
+The database agent and the AppDynamics controller work together to monitor a database. The agent collects the data from the database server and passes it to the AppDynamics Controller for interpretation and display in the Controller UI. The database agent does not need to be installed on the same system hosting the database server.
 
-<p class="note"><strong>Note</strong>: Because each DB agent starts with 1G of memory, AppDynamics reccommends configuring at most two DB collectors for each DBAgent app running in Pivotal Cloud Foundry (PCF).</p>
+<p class="note"><strong>Note</strong>: Because each database agent starts with 1G of memory, AppDynamics reccommends configuring at most two DB collectors for each database agent app running in Pivotal Cloud Foundry (PCF).</p>
 
-1. Open the Appdynamics controller and go to **Databases > Configuration > Collectors**.
+1. Open the AppDynamics controller and go to **Databases > Configuration > Collectors**.
   ![Database collector](../images/Database2.png) 
 
 1. Configure a database collector using the [Configure Database Collectors](https://docs.appdynamics.com/display/PRO41/Configure+Database+Collectors) topic from the AppDynamics docs.
-  - For the **Database Agent** field in every collector, select the DB agent name deployed in PCF. In the example image below, you choose **DBAgent-PCF-Public-Controller-1** as the **Database Agent** and not **Default DB Agent**
+  - For the **Database Agent** field in every collector, select the database agent name deployed in PCF. In the example image below, you choose **DBAgent-PCF-Public-Controller-1** as the **Database Agent** and not **Default DB Agent**
     ![CollectorConfig](../images/Database3.png) 
 1. Once you configure and save the collector, generate some traffic on
    an application that includes database operations. After a couple

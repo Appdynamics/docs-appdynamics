@@ -3,7 +3,7 @@ title: Installing and Configuring AppDynamics APM
 owner: Partners
 ---
 
-This topic explains how to install and configure AppDynamics APM for Pivotal Cloud Foundry® (PCF) through a PCF service broker. Service brokers allow Cloud Foundry applications to bind to and consume the services from the Apps Manager console or command line.
+This topic explains how to install and configure AppDynamics APM for Pivotal Cloud Foundry (PCF) through a PCF service broker. Service brokers allow Cloud Foundry applications to bind to and consume the services from the Apps Manager console or command line.
 
 The AppDynamics Machine Agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard.
 
@@ -198,7 +198,7 @@ If the machine agent does not expose any metrics in the AppDynamics dashboard:
 
 * Ensure the collector instance is running in Elastic Runtime tile.
 * Ensure the JMX Bridge tile is installed and verify the admin credentials, IP address, and port of the Metrics instance.
-* If a proxy exists, the Machine Agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
+* If a proxy exists, the machine agent might not be able to reach out. Add the following environment variable parameters to the "AppDynamicsPCFOpsMetrics" app in the AppDynamicsPCFOpsMetrics-related Org and Space:
 
 <pre class='terminal'>
   $ cf set-env AppDynamicsPCFOpsMetrics JAVA_OPTS "

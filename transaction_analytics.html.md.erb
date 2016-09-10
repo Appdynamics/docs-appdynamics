@@ -23,9 +23,9 @@ The application agent forwards analytics data to the analytics agent, which send
 
 The following list describes the components in the image above:   
 
- - **AppDynamics App Agent**: Application Analytics relies on the same app agents that AppDynamics APM uses. If you already use AppDynamics APM, you likely already have these deployed to your monitored applications
+ - **AppDynamics app agent**: Application Analytics relies on the same app agents that AppDynamics APM uses. If you already use AppDynamics APM, you likely already have these deployed to your monitored applications
  - **Analytics Agent**: The Analytics Agent collects data from one or more app agents and sends it to the Events Service.
- - **Analytics Plugin** (AP) to the App Agent: The Analytics Plugin extends App Agent functionality so that it can collect and forward data to the Analytics Agent.
+ - **Analytics Plugin** (AP) to the app agent: The Analytics Plugin extends app agent functionality so that it can collect and forward data to the Analytics Agent.
  - **Event Service**: The event service is an unstructured document store which acts as a place holder for analytics data. If you do not already have an event service running, contact AppDynamics support to get one.
  - **Controller**: The controller queries the event service and renders analytics data to the controller dashboard.
  
