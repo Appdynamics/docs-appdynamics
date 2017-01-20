@@ -17,41 +17,41 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
 1. Log in to the Pivotal Cloud Foundry Ops Manager.
 1. Click **Import a Product** and import the AppDynamics product file.
 
-    <%= image_tag("appdynamics/images/import-product.png") %>
+    <%= image_tag("import-product.png") %>
 
 1. Select the **AppDynamics Service Broker**.
 
-    <%= image_tag("appdynamics/images/select-appdynamics.png") %>
+    <%= image_tag("select-appdynamics.png") %>
 
 1. Click **Add** on the **AppDynamics Service Broker** tile to add this product to your staging area.
 
 1. Click the newly added tile to review any configurable options. Review the [Configuring the AppDynamics Tile](#configuring) section below for more information.
 
-    <%= image_tag("appdynamics/images/configure-appdynamics.png") %>
+    <%= image_tag("configure-appdynamics.png") %>
 
 1. Click **Apply Changes** to apply the configuration.
 
 ##<a id='configuring'></a>Configuring the AppDynamics Tile ##
 
 1. From the **Ops Manager Installation Dashboard**, click the **AppDynamics Service Broker** tile.
-<%= image_tag("appdynamics/images/select.png") %>
+<%= image_tag("select.png") %>
 
 1. Select **Service Broker Application**.
-        <%= image_tag("appdynamics/images/default.png") %>
+        <%= image_tag("default.png") %>
     1. Before creating Service Plans, you must collect the license keys from the
       AppDynamics Dashboard.
         1. Log in to your AppDynamics account and click the "Settings" gear icon
         in the upper right corner of the page.<br>
-          <%= image_tag("appdynamics/images/settings.png") %>
+          <%= image_tag("settings.png") %>
         1. Select **License**.<br>
-          <%= image_tag("appdynamics/images/license.png") %>
+          <%= image_tag("license.png") %>
         1. Record the details of the license access key and controller.
-          <%= image_tag("appdynamics/images/details.png") %>
+          <%= image_tag("details.png") %>
     1. Click **Add** on the far right of the Service Plan screen to create a new
       service plan.
     1. Enter the **Account Name** and **Account Access Key** from the license page along with controller binding credentials (`ip`, `port`, `ssl-enabled`). The plan name and plan description are user-defined.
 
-        <%= image_tag("appdynamics/images/create-plan.png") %>
+        <%= image_tag("create-plan.png") %>
 
     1. Optionally, create additional service plans for the same account key.
     1. Follow the instructions in the [Configuring Database Monitoring](database_monitoring.html) topic to complete the database fields.
@@ -66,15 +66,15 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
     1. Give a user-defined **Application Name**. This name should be unique across multiple PCF installations.
     1. Complete the **AppDynamics Controller**, **Account Name**, and **Account Access
       Keys** fields.
-        <%= image_tag("appdynamics/images/machine-agent.png") %>
+        <%= image_tag("machine-agent.png") %>
     1. Fill in the JMX Bridge Server IP and Port (default: 44444).
-        <%= image_tag("appdynamics/images/JMX_Bridge.png") %>
+        <%= image_tag("JMX_Bridge.png") %>
     1. Fill in the credentials to connect to the server. Select the **JMX
       Authentication** checkbox.
     1. The AppDynamics tile does not support communication with JMX Bridge over SSL. In the **JMX Provider** section of the JMX Bridge tile, clear the **Enable SSL** checkbox. 
-        <%= image_tag("appdynamics/images/DisabledJMXBridge.png") %>
+        <%= image_tag("DisabledJMXBridge.png") %>
     1. Disable SSL in the AppDynamics tile.
-        <%= image_tag("appdynamics/images/DisabledSSL.png") %>
+        <%= image_tag("DisabledSSL.png") %>
     1. Save the changes.
 
 1. Select **Analytics Agent**. Follow the instructions in the [Configuring Transaction Analytics](transaction_analytics.html) topic to complete this section of the tile. 
@@ -107,15 +107,15 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
 
 1. Log in to Apps Manager and navigate to the Services Marketplace.
 
-    <%= image_tag("appdynamics/images/marketplace.png") %>
+    <%= image_tag("marketplace.png") %>
 
 1. View AppDynamics Service Plans.
 
-    <%= image_tag("appdynamics/images/plans.png") %>
+    <%= image_tag("plans.png") %>
 
 1. Bind the AppDynamics Service to an Application.
 
-    <%= image_tag("appdynamics/images/bind.png") %>
+    <%= image_tag("bind.png") %>
 
 1. In a terminal window, use the `cf restage` command to make the changes effective.
 
@@ -125,15 +125,15 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
 
 1. Confirm that your application node is reporting to the Controller by logging in to AppDynamics. Your application should appear in the Applications list or as a node in the Application Dashboard:
     <br><br>
-    <%= image_tag("appdynamics/images/dashboard.png") %>
+    <%= image_tag("dashboard.png") %>
 1. Select **Top Business Transactions**, **Network Dashboard**, and **Transaction Snapshots** to display other views of the AppDynamics Application Dashboard.
-    <%= image_tag("appdynamics/images/dashboard2.png") %>
-    <%= image_tag("appdynamics/images/dashboard3.png") %>
-    <%= image_tag("appdynamics/images/dashboard4.png") %>
+    <%= image_tag("dashboard2.png") %>
+    <%= image_tag("dashboard3.png") %>
+    <%= image_tag("dashboard4.png") %>
 
 1. To check PCF Ops Metrics, check for an application named **AppDynamicsPCFOpsMetrics** in the controller UI. The Application Dashboard for this application would be empty since it only reports metrics of PCF. To see the metrics, select **Home > AppDynamicsPCFOpsMetrics > Metric Browser > Application Infrastructure Performance > MachineAgentTier > Custom Metrics > CF**. This lists all underlying components of PCF such as CloudController and Router.
 
-    <%= image_tag("appdynamics/images/view12.2.1.png") %>
+    <%= image_tag("view12.2.1.png") %>
 
 ##<a id='http-proxy'></a>Configuration with HTTP Proxy ##
 
