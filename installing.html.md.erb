@@ -67,6 +67,8 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
     1. Complete the **AppDynamics Controller**, **Account Name**, and **Account Access
       Keys** fields.
         <%= image_tag("machine-agent.png") %>
+    1. If you do not want to override default config, select **Disable**. If you want to override default config **Enable**, and specify your CloudFoundry Config yaml file to specify the metrics you wish to pull from CloudFoundry. Use the template mentioned [here](https://github.com/Appdynamics/cloud-foundry-extension/blob/PCF-Service-Broker/conf/config.yaml) to override config yaml file.
+        <%= image_tag("OverrideJMX.png") %>
     1. Fill in the JMX Bridge Server IP and Port (default: 44444).
         <%= image_tag("JMX_Bridge.png") %>
     1. Fill in the credentials to connect to the server. Select the **JMX
@@ -96,7 +98,7 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
 1. For new applications, use the `cf push` command to deploy your application, using the appropriate language buildpack.
   * Java:
     <pre class="terminal">
- $ cf push APPNAME -b  https:/<span>/</span>github.com/cloudfoundry/java-buildpack
+ $ cf push APPNAME -b  https:/<span>/</span>github.com/appdynamics/java-buildpack
     </pre>
   * PHP:
     <pre class="terminal">
