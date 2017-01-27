@@ -11,17 +11,19 @@ AppDynamics APM supports performance monitoring of application and machine metri
 
 <dl>
 <dt>Current <a href="https://network.pivotal.io/products/p-appdynamics">AppDynamics APM tile</a> for Pivotal Cloud Foundry details:</dt>
-<dd><strong>Version</strong>: 1.1.2</dd>
-<dd><strong>Release Date</strong>: 2016-07-26</dd>
-<dd><strong>AppDynamics Machine Agent Version</strong>: 4.1.5.3</dd>
+<dd><strong>Version</strong>: 1.2</dd>
+<dd><strong>Release Date</strong>: 2017-02-01</dd>
+<dd><strong>AppDynamics Machine Agent Version</strong>: 4.2.10.0</dd>
 <dd><strong>AppDynamics Database Agent Version</strong>: 4.1.8.0, 4.1.10.0</dd>
 <dd><strong>AppDynamics Analytics Agent Version</strong>: 4.1.8.0</dd>
-<dd><strong>Compatible Ops Manager Version(s)</strong>: 1.6.x, 1.7.x</dd>
-<dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.6.x, 1.7.x</dd>
-<dd><strong>Compatible AppDynamics Controller Version(s)</strong>: 4.x</dd>
+<dd><strong>Compatible Ops Manager Version(s)</strong>: 1.7.x, 1.8.x, 1.9.x</dd>
+<dd><strong>Compatible Elastic Runtime Version(s)</strong>: 1.7.x, 1.8.x, 1.9.x</dd>
+<dd><strong>Compatible AppDynamics Controller Version(s)</strong>: 4.2.x</dd>
 <dd><strong>vSphere support?</strong> Yes</dd>
 <dd><strong>OpenStack support?</strong> Yes</dd>
 <dd><strong>AWS support?</strong> Yes</dd>
+<dd><strong>GCP support?</strong> Yes</dd>
+<dd><strong>Azure support?</strong> Yes</dd>
 </dl>
 
 ##<a id='trial'></a>Trial License ##
@@ -37,6 +39,7 @@ Users interested in AppDynamics can sign up for a [free trial license](https://p
   * [Upgrading to AppDynamics APM 1.0.1](upgrade_to_1_0_1.html)
   * [Upgrading to AppDynamics APM 1.1.1](upgrade_to_1_1_1.html)
   * [Upgrading to AppDynamics APM 1.1.2](upgrade_to_1_1_2.html)
+  * [Upgrading to AppDynamics APM 1.2](upgrade_to_1_2.html)
 
 ##<a id='offline-dependencies'></a>Packaging Dependencies for Offline Buildpacks##
 
@@ -46,7 +49,7 @@ Review the [Packaging Dependencies for Offline Buildpacks](http://docs.pivotal.i
 
 * Currently supported Buildpacks bundling AppDynamics Agent are the Java and PHP Buildpacks.
     * Java Buildpack 3.4 and later
-      * Use the latest buildpack or online Java buildpack (use `-b https://github.com/cloudfoundry/java-buildpack` or specify via manifest) when pushing apps that consume the AppDynamics Services
+      * Use the custom AppDynamics Java Buildpack https://github.com/Appdynamics/java-buildpack which identifies the AppDynamics service
     * PHP Buildpack
        * Use the custom AppDynamics PHP Buildpack https://github.com/Appdynamics/php-buildpack which identifies the AppDynamics service
     * NodeJS Buildpack
