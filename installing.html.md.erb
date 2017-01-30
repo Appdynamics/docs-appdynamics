@@ -71,9 +71,7 @@ For more information, see [Configuring the AppDynamics Tile](#configuring).
       Keys** fields.
         <%= image_tag("machine-agent.png") %>
     1. If you do not want to override the default configuration, select **Disable**. 
-If you want to override the default configuration, select **Enable** and specify your Cloud Foundry Config YAML file to specify the metrics 
-that you want to pull in from JMX Bridge. 
-Use this [template](https://github.com/Appdynamics/cloud-foundry-extension/blob/PCF-Service-Broker/conf/config.yaml) to override the config YAML file.
+If you want to override the default configuration, select **Enable** and specify the metrics that you want to pull in from JMX Bridge in your Cloud Foundry `config.yml` file. Use this [template](https://github.com/Appdynamics/cloud-foundry-extension/blob/PCF-Service-Broker/conf/config.yaml) to override the config YAML file.
         <%= image_tag("OverrideJMX.png") %>
     1. Fill in the JMX Bridge Server IP and Port (default: 44444).
         <%= image_tag("JMX_Bridge.png") %>
