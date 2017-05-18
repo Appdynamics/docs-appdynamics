@@ -3,9 +3,11 @@ title: Installing and Configuring AppDynamics APM
 owner: Partners
 ---
 
-This topic explains how to install and configure AppDynamics APM for Pivotal Cloud Foundry (PCF) through a PCF service broker. Service brokers allow Cloud Foundry applications to bind to and consume the services from the Apps Manager console or command line.
+This topic explains how to install and configure AppDynamics APM for Pivotal Cloud Foundry (PCF) through a PCF service broker. 
+Service brokers allow Cloud Foundry applications to bind to and consume the services from the Apps Manager console or command line.
 
-The AppDynamics Machine Agent extension is a separate application that can consume management metrics (exposed via JMX MBeans) and expose it on the AppDynamics management dashboard.
+The AppDynamics Machine Agent extension is a separate application that can consume management metrics 
+(exposed via JMX MBeans) and expose it on the AppDynamics management dashboard.
 
 The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Service Broker as an application, registers it as a Service Broker on Cloud Foundry, and exposes its service plans on the Marketplace. It also installs the Machine Agent Extension.
 
@@ -14,7 +16,7 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
 ##<a id='installing'></a> Installing the AppDynamics Tile ##
 
 1. Download the product file from the [AppDynamics Product page](https://network.pivotal.io/products/p-appdynamics) on the [Pivotal Network](https://network.pivotal.io/).
-1. Log in to the Pivotal Cloud Foundry Ops Manager.
+1. Log in to the PCF Operations Manager (Ops Manager).
 1. Click **Import a Product** and import the AppDynamics product file.
 
     <%= image_tag("import-product.png") %>
@@ -25,7 +27,8 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
 
 1. Click **Add** on the **AppDynamics Service Broker** tile to add this product to your staging area.
 
-1. Click the newly added tile to review any configurable options. Review the [Configuring the AppDynamics Tile](#configuring) section below for more information.
+1. Click the newly added tile to review any configurable options. 
+For more information, see [Configuring the AppDynamics Tile](#configuring).
 
     <%= image_tag("configure-appdynamics.png") %>
 
@@ -67,7 +70,8 @@ The Pivotal Cloud Foundry (PCF) tile for AppDynamics installs the AppDynamics Se
     1. Complete the **AppDynamics Controller**, **Account Name**, and **Account Access
       Keys** fields.
         <%= image_tag("machine-agent.png") %>
-    1. If you do not want to override default config, select **Disable**. If you want to override default config **Enable**, and specify your CloudFoundry Config yaml file to specify the metrics you wish to pull from CloudFoundry. Use the template mentioned [here](https://github.com/Appdynamics/cloud-foundry-extension/blob/PCF-Service-Broker/conf/config.yaml) to override config yaml file.
+    1. If you do not want to override the default configuration, select **Disable**. 
+If you want to override the default configuration, select **Enable** and specify the metrics that you want to pull in from JMX Bridge in your Cloud Foundry `config.yml` file. Use this [template](https://github.com/Appdynamics/cloud-foundry-extension/blob/PCF-Service-Broker/conf/config.yaml) to override the config YAML file.
         <%= image_tag("OverrideJMX.png") %>
     1. Fill in the JMX Bridge Server IP and Port (default: 44444).
         <%= image_tag("JMX_Bridge.png") %>
@@ -220,7 +224,7 @@ Edit the above values as needed for IP addresses, passwords, proxy host, and por
 
 ##<a id="reference"></a>Further Reference ##
 
-Refer to the following links for more information:
+For more information, see the following:
 
 * [App Agent for Java Configuration Properties: Proxy Properties for the Controller](https://docs.appdynamics.com/display/PRO14S/App+Agent+for+Java+Configuration+Properties#AppAgentforJavaConfigurationProperties-ProxyPropertiesfortheController), from the AppDynamics Documentation.
 * [Machine Agent Configuration Properties: Proxy Properties for the Controller](https://docs.appdynamics.com/display/PRO14S/Machine+Agent+Configuration+Properties#MachineAgentConfigurationProperties-ProxyPropertiesfortheController), from the AppDynamics Documentation.
